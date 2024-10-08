@@ -14,7 +14,7 @@ export const LoginForm = () => {
 
   const { register, handleSubmit } = useForm<FormInputs>();
 
-  const onSubmit = async (data: FormInputs) => {
+  const onSubmit = async () => {
     router.push("/dashboard");
   };
 
