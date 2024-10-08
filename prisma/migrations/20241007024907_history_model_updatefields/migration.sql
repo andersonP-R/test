@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "History" ALTER COLUMN "edad" SET DATA TYPE TEXT;

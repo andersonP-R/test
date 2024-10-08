@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String @id @default(uuid())
+  name      String
+  email     String @unique
+  password  String
+  role      String
+  bornYear  String
+  telephone String
+  address   String
+
+  // Relaciones
+  history   History @relation(fields: [historyId], references: [id])
+  historyId String
+
+  result   Result @relation(fields: [resultId], references: [id])
+  resultId String
+
+  procedure   Procedure @relation(fields: [procedureId], references: [id])
+  procedureId String
+
+  appointment   Appointment @relation(fields: [appointmentId], references: [id])
+  appointmentId String
+
+  request   Request @relation(fields: [requestId], references: [id])
+  requestId String
+}
+
+model Specialist {
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
+  area     String
+}
+
+model History {
+  id              String @id @default(uuid())
+  nombre          String
+  apellido        String
+  edad            String
+  genero          String
+  fechaNacimiento String
+  estadoCivil     String
+  ocupacion       String
+  direccion       String
+  telefono        String
+  antecedentes    String
+  diagnosticos    String
+  tratamientos    String
+  notasMedicas    String
+
+  User User[]
+}
+
+model Result {
+  id           String @id @default(uuid())
+  tipoExamen   String
+  fechaExamen  String
+  resultado    String
+  documentoPdf String
+
+  User User[]
+}
+
+model Procedure {
+  id           String @id @default(uuid())
+  tipo         String
+  fecha        String
+  descripcion  String
+  documentoPdf String
+
+  User User[]
+}
+
+model Appointment {
+  id     String @id @default(uuid())
+  fecha  String
+  hora   String
+  motivo String
+  estado String
+
+  User User[]
+}
+
+model Request {
+  id             String @id @default(uuid())
+  medicamento    String
+  dosis          String
+  estado         String
+  fechaSolicitud String
+
+  User User[]
+}
