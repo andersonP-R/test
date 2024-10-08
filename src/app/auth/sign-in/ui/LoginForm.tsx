@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type FormInputs = {
   email: string;
@@ -11,24 +10,16 @@ type FormInputs = {
 };
 
 export const LoginForm = () => {
-  const [error, setError] = useState("");
   const router = useRouter();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormInputs>();
+  const { register, handleSubmit } = useForm<FormInputs>();
 
   const onSubmit = async (data: FormInputs) => {
-    const { email, password } = data;
-
     router.push("/dashboard");
   };
 
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-      {error && <span className="text-red-500"> {error} </span>}
       <label htmlFor="email">Correo electrónico</label>
       <input
         className="px-5 py-2 border bg-gray-200 rounded mb-5"

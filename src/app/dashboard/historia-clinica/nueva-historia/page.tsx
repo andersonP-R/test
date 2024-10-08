@@ -22,7 +22,7 @@ type FormInputs = {
   notasMedicas: string;
 };
 
-export default function newHistory() {
+export default function NewHistory() {
   const [errorMessage, setErrorMessage] = useState("");
   const {
     register,

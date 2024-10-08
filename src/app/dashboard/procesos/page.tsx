@@ -1,6 +1,5 @@
 import { getAllCitas } from "@/actions";
 import Link from "next/link";
-import React from "react";
 
 export default async function ProcesosPage() {
   const data = await getAllCitas();

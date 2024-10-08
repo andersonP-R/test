@@ -1,6 +1,5 @@
 import { getAllProcess } from "@/actions/process/get-all-process";
 import Link from "next/link";
-import React from "react";
 
 export default async function ResultadosPage() {
   const data = await getAllProcess();
