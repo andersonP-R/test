@@ -1,54 +1,90 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useFormState, useFormStatus } from "react-dom";
 
-type FormInputs = {
-  email: string;
-  password: string;
-};
+import { authenticate } from "@/actions";
+import { IoInformationOutline } from "react-icons/io5";
+import clsx from "clsx";
 
 export const LoginForm = () => {
-  const router = useRouter();
+  // const router = useRouter();
+  const [state, dispatch] = useFormState(authenticate, undefined);
 
-  const { register, handleSubmit } = useForm<FormInputs>();
+  console.log(state);
 
-  const onSubmit = async () => {
-    router.push("/dashboard");
-  };
+  useEffect(() => {
+    if (state === "Success") {
+      // redireccionar
+      // router.replace('/');
+      window.location.replace("/");
+    }
+  }, [state]);
 
   return (
-    <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+    <form action={dispatch} className="flex flex-col">
       <label htmlFor="email">Correo electrónico</label>
       <input
         className="px-5 py-2 border bg-gray-200 rounded mb-5"
         type="email"
-        autoFocus
-        {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+        name="email"
       />
 
-      <label htmlFor="password">Contraseña</label>
+      <label htmlFor="email">Contraseña</label>
       <input
         className="px-5 py-2 border bg-gray-200 rounded mb-5"
         type="password"
-        {...register("password", { required: true, minLength: 4 })}
+        name="password"
       />
 
-      <button className="bg-blue-600 p-2 text-white">Ingresar</button>
+      <div
+        className="flex h-8 items-end space-x-1"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {state === "CredentialsSignin" && (
+          <div className="flex flex-row mb-2">
+            <IoInformationOutline className="h-5 w-5 text-red-500" />
+            <p className="text-sm text-red-500">
+              Credenciales no son correctas
+            </p>
+          </div>
+        )}
+      </div>
 
+      <LoginButton />
+      {/* <button type="submit" className="btn-primary">
+        Ingresar
+      </button> */}
+
+      {/* divisor l ine */}
       <div className="flex items-center my-5">
         <div className="flex-1 border-t border-gray-500"></div>
         <div className="px-2 text-gray-800">O</div>
         <div className="flex-1 border-t border-gray-500"></div>
       </div>
 
-      <Link
-        href="/auth/sign-up"
-        className="bg-blue-600 p-2 text-white text-center"
-      >
+      <Link href="/auth/new-account" className="btn-secondary text-center">
         Crear una nueva cuenta
       </Link>
     </form>
   );
 };
+
+function LoginButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      type="submit"
+      className={clsx({
+        "btn-primary": !pending,
+        "btn-disabled": pending,
+      })}
+      disabled={pending}
+    >
+      Ingresar
+    </button>
+  );
+}
