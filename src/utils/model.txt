@@ -1,0 +1,62 @@
+ESCUELAs MODEL
+
+Nombre
+Documento
+NIT
+Tipo Documento
+Sedes
+Área
+Ciclos
+Categoría Deportiva
+Nivel
+Convenio
+Género
+Teléfono
+Regional
+Organización
+Categoría Precio
+Categoría Afiliación
+Cotización
+creada_por
+Item Cotización
+Estado Cotización
+Tipo Impuesto
+Canal de Pago
+Canal de Cotización
+Forma de Pago
+Franquicias
+Código Centro de Beneficios
+Precio Base
+Impuesto
+Costo
+Tarifa Plena
+Subsidio a la Demanda
+Valor Descuento Usuario
+Acumulado Descuento
+Valor Total Descontado
+Número de Orden
+Fecha Transacción
+Número del Pedido de Venta
+Tipo Servicio
+Identificador del Cajero
+Identificador Máquina
+Fecha Registro
+Mes
+Hora Registro
+Nombre Titular
+Documento Titular
+Fecha Cotización
+Cantidad
+Nombre Precio
+Id Material
+Objeto Costo
+Nombre Servicio
+Fecha Inicio del Servicio
+Día
+Fecha Fin del Servicio
+Hora Inicio del Servicio
+Hora Fin del Servicio
+Edad
+Fecha de Nacimiento
+Valora
+Usos

@@ -2,28 +2,26 @@
 
 import Link from "next/link";
 import clsx from "clsx";
-// import { useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import {
   IoCloseOutline,
+  IoFootballOutline,
   IoLogInOutline,
   IoLogOutOutline,
-  IoPeopleOutline,
   IoPersonOutline,
   IoSearchOutline,
-  IoShirtOutline,
   IoTicketOutline,
 } from "react-icons/io5";
 
 import { useUIStore } from "@/store";
-// import { logout } from "@/actions";
+import { logout } from "@/actions";
 
 export const Sidebar = () => {
   const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen);
   const closeMenu = useUIStore((state) => state.closeSideMenu);
 
-  //   const { data: session } = useSession();
-  //   const isAuthenticated = !!session?.user;
-  //   const isAdmin = session?.user.role === "admin";
+  const { data: session } = useSession();
+  const isAuthenticated = !!session?.user;
 
   return (
     <div>
@@ -67,7 +65,7 @@ export const Sidebar = () => {
 
         {/* Menú */}
 
-        {/* {isAuthenticated && (
+        {isAuthenticated && (
           <>
             <Link
               href="/profile"
@@ -89,6 +87,42 @@ export const Sidebar = () => {
           </>
         )}
 
+        <Link
+          href="/tienda/escuelas-deportivas"
+          onClick={() => closeMenu()}
+          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+        >
+          <IoFootballOutline size={30} />
+          <span className="ml-3 text-xl">Escuelas deportivas</span>
+        </Link>
+
+        <Link
+          href="/tienda/practicas-libres"
+          onClick={() => closeMenu()}
+          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+        >
+          <IoFootballOutline size={30} />
+          <span className="ml-3 text-xl">Practicas libres</span>
+        </Link>
+
+        <Link
+          href="/tienda/planes-gimnasio"
+          onClick={() => closeMenu()}
+          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+        >
+          <IoFootballOutline size={30} />
+          <span className="ml-3 text-xl">Planes de gimnasio</span>
+        </Link>
+
+        <Link
+          href="/tienda/pasadia-cafam-melgar"
+          onClick={() => closeMenu()}
+          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+        >
+          <IoFootballOutline size={30} />
+          <span className="ml-3 text-xl">Pasadia Cafam Melgar</span>
+        </Link>
+
         {isAuthenticated && (
           <button
             className="flex w-full items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
@@ -108,40 +142,7 @@ export const Sidebar = () => {
             <IoLogInOutline size={30} />
             <span className="ml-3 text-xl">Ingresar</span>
           </Link>
-        )} */}
-
-        {/* {isAdmin && (
-          <>
-            <div className="w-full h-px bg-gray-200 my-10" />
-
-            <Link
-              href="/admin/products"
-              onClick={() => closeMenu()}
-              className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
-            >
-              <IoShirtOutline size={30} />
-              <span className="ml-3 text-xl">Productos</span>
-            </Link>
-
-            <Link
-              href="/admin/orders"
-              onClick={() => closeMenu()}
-              className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
-            >
-              <IoTicketOutline size={30} />
-              <span className="ml-3 text-xl">Ordenes</span>
-            </Link>
-
-            <Link
-              href="/admin/users"
-              onClick={() => closeMenu()}
-              className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
-            >
-              <IoPeopleOutline size={30} />
-              <span className="ml-3 text-xl">Usuarios</span>
-            </Link>
-          </>
-        )} */}
+        )}
       </nav>
     </div>
   );

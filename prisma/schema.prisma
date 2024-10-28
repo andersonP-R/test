@@ -14,16 +14,46 @@ datasource db {
 }
 
 model User {
-  id             String  @id @default(uuid())
-  nombres        String?
-  apellidos      String?
-  email          String  @unique
-  password       String
-  tipoId         String?
-  identificacion String?
-  avatar         String  @default("")
-  direccion      String?
+  id                  String  @id @default(uuid())
+  nombres             String?
+  apellidos           String?
+  email               String  @unique
+  password            String
+  tipoId              String?
+  identificacion      String?
+  avatar              String  @default("")
+  direccion           String?
+  categoriaAfiliacion String?
   // logros
   // objetos
   // carnetVirtual
+}
+
+model Service {
+  id              String   @id @default(uuid())
+  nombre          String
+  descripcion     String
+  tipo            String
+  categorias      String[]
+  precios         Int[]
+  objetivo        String
+  requisitos      String[] @default([])
+  recomendaciones String[] @default([])
+  fechaCreacion   String
+  imagenes        String[]
+}
+
+model Center {
+  id          String @id @default(uuid())
+  nombre      String
+  direccion   String
+  rangoEdad   String
+  ciclo       Int
+  nivel       String
+  numeroCupos Int
+  fechaInicio String
+  fechaFin    String
+  horario     String
+
+  imagenes String[]
 }
