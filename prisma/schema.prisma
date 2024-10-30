@@ -36,6 +36,7 @@ model Service {
   tipo            String
   categorias      String[]
   precios         Int[]
+  slug            String   @unique
   objetivo        String
   requisitos      String[] @default([])
   recomendaciones String[] @default([])

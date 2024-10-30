@@ -1,5 +1,7 @@
+import bcryptjs from "bcryptjs";
 interface SeedService {
   nombre: string;
+  slug: string;
   descripcion: string;
   tipo: string;
   categorias: string[];
@@ -34,7 +36,7 @@ export const initialData: SeedData = {
       nombres: "anderson",
       apellidos: "rivera",
       email: "anderson@gmail.com",
-      password: "123456",
+      password: bcryptjs.hashSync("123456"),
       tipoId: "cedula",
       identificacion: "202939381",
       avatar: "",
@@ -45,7 +47,7 @@ export const initialData: SeedData = {
       nombres: "valentina",
       apellidos: "gutierres",
       email: "valen@gmail.com",
-      password: "123456",
+      password: bcryptjs.hashSync("123456"),
       tipoId: "cedula",
       identificacion: "88423434",
       avatar: "",
@@ -56,6 +58,7 @@ export const initialData: SeedData = {
   services: [
     {
       nombre: "Escuela Fútbol Fundación Real Madrid Alevín (9 a 10 años)",
+      slug: "escuela_futbol_fundacion_real_madrid_alevin_9_a_10_anos",
       descripcion:
         "Los niños trabajarán en situaciones de juego realistas y se enfocarán en mejorar su técnica individual, sus habilidades tácticas y su forma física. Durante las sesiones, se enfatizará en la importancia del trabajo en equipo, la colaboración y la creatividad en situaciones de juego. Los niños aprenderán a aplicar tácticas avanzadas del juego, como la jugada combinada, la presión defensiva y la recuperación del balón. También se enfatizará en la toma de decisiones rápidas y precisas en el campo de juego.",
       tipo: "escuela deportiva",
@@ -76,6 +79,7 @@ export const initialData: SeedData = {
     },
     {
       nombre: "Escuela Natación Ambientación (nivel 1)",
+      slug: "escuela_natacion_ambientacion_nivel_1",
       descripcion:
         "Descubre la diversión acuática desde el primer día con nuestro curso de natación. Aprende a respirar y flotar con confianza en el emocionante mundo acuático.",
       tipo: "escuela deportiva",
@@ -92,10 +96,11 @@ export const initialData: SeedData = {
         "Llega con antelación a la clase para que puedas cambiarte y llegar a tiempo.",
       ],
       fechaCreacion: "20/05/2023",
-      imagenes: ["nata_ambi_1.jpg", "nata_ambi_1.jpg"],
+      imagenes: ["nata_ambi_1.jpg", "nata_ambi_2.jpg"],
     },
     {
       nombre: "Escuela Natación Facatativa - Pre Estilos FUNDEC",
+      slug: "escuela_natacion_facatativa_pre_estilos_fundec",
       descripcion:
         "Este curso de Pre Estilos te prepara para los estilos de natación con ejercicios avanzados. Mejora tu técnica, resistencia y confianza para avanzar al siguiente nivel en el agua, dominando cada movimiento.",
       tipo: "escuela deportiva",
@@ -114,6 +119,7 @@ export const initialData: SeedData = {
     },
     {
       nombre: "Escuela Voleibol Avanzado",
+      slug: "escuela_voleibol_avanzado",
       descripcion:
         "Eleva tu juego con nuestro curso avanzado de voleibol! Sumérgete en técnicas y estrategias de élite, perfecciona tu dominio en la cancha y experimenta una nueva dimensión de competencia. Este curso te desafía a alcanzar tu máximo potencial, guiado por entrenadores especializados y un enfoque en la excelencia.",
       tipo: "escuela deportiva",
@@ -135,6 +141,7 @@ export const initialData: SeedData = {
     },
     {
       nombre: "Escuela Tenis Avanzado",
+      slug: "escuela_tenis_avanzado",
       descripcion:
         "El curso se enfoca en perfeccionar técnicas avanzadas de golpeo, incluyendo la variación de golpes y el control de la profundidad de los mismos. También se enfoca en mejorar la velocidad, precisión y variación en el servicio, así como en desarrollar estrategias y tácticas altamente avanzadas para aplicar durante los juegos.",
       tipo: "escuela deportiva",
@@ -157,6 +164,7 @@ export const initialData: SeedData = {
     },
     {
       nombre: "Escuela Taekwondo Avanzado",
+      slug: "escuela_taekwondo_avanzado",
       descripcion:
         "Sumérgete en la excelencia del Taekwondo con nuestro curso avanzado. Enfocado en la maestría técnica y el refinamiento de habilidades, este nivel te desafiará a alcanzar nuevos estándares en precisión, velocidad y aplicación táctica del arte marcial.",
       tipo: "escuela deportiva",
@@ -179,6 +187,7 @@ export const initialData: SeedData = {
     },
     {
       nombre: "Billar - Club Campestre",
+      slug: "billar_club_campestre",
       descripcion:
         "Imagina el recorrido de la carambola, concéntrate, apunta con el taco, dispara con la velocidad adecuada y ¡gana tu partida!",
       tipo: "practica libre",
@@ -201,6 +210,7 @@ export const initialData: SeedData = {
     },
     {
       nombre: "Bodytech Antares - Súper Año",
+      slug: "bodytech_antares_super_ano",
       descripcion:
         "La categoría SÚPER a la que pertenece este gimnasio te permite acceder a 8 sedes super de Colombia. Este gimnasio está dotado con modernos equipos de musculación y cardiovasculares, zona funcional, salones de entrenamiento grupales e indoor cycling así como zonas húmedas.",
       tipo: "plan gimnasio",

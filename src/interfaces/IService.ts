@@ -1,6 +1,7 @@
 export interface IService {
   id: string;
   nombre: string;
+  slug: string;
   descripcion: string;
   tipo: string;
   categorias: string[];

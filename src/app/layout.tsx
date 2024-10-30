@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { inter } from "@/config/fonts";
+import { titleFont } from "@/config/fonts";
 import { Providers } from "@/components";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${inter.className} `}>
+      <body className={`${titleFont.className} `}>
         <Providers>{children}</Providers>
       </body>
     </html>

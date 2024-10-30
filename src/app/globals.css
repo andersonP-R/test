@@ -51,11 +51,11 @@ body {
 
 
 .btn-primary {
-  @apply bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded transition-all;
+  @apply bg-[#0650A0] hover:bg-blue-700 text-white py-2 px-4 rounded-xl transition-all;
 }
 
 .btn-secondary {
-  @apply bg-gray-200 hover:bg-gray-300 text-black py-2 px-4 rounded transition-all;
+  @apply bg-gray-200 hover:bg-gray-300 text-blue-950 py-2 px-4 rounded-lg transition-all;
 }
 
 .btn-disabled {

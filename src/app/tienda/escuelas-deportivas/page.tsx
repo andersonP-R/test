@@ -2,8 +2,8 @@ export const revalidate = 60; // 60 segundos
 
 import { redirect } from "next/navigation";
 
-// import { getPaginatedProductsWithImages } from "@/actions";
-import { ServiceGrid } from "@/components";
+import { Pagination, ServiceGrid } from "@/components";
+import { getPaginatedServices } from "@/actions";
 
 interface Props {
   searchParams: {
@@ -13,21 +13,24 @@ interface Props {
 
 export default async function EscuelasPage({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
+  const type = "escuela deportiva";
 
-  // const { products, currentPage, totalPages } =
-  //   await getPaginatedProductsWithImages({ page });
+  const { services, currentPage, totalPages } = await getPaginatedServices({
+    page,
+    type,
+  });
 
-  // if (services.length === 0) {
-  //   redirect("/");
-  // }
+  if (services.length === 0) {
+    redirect("/");
+  }
 
   return (
     <>
       {/* <Title title="Tienda" subtitle="Todos los productos" className="mb-2" /> */}
 
-      <ServiceGrid services={[]} />
+      <ServiceGrid services={services} />
 
-      {/* <Pagination totalPages={totalPages} /> */}
+      <Pagination totalPages={totalPages} />
     </>
   );
 }

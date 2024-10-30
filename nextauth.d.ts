@@ -11,6 +11,7 @@ declare module "next-auth" {
       identificacion?: string;
       avatar?: string;
       direccion?: string;
+      categoriaAfiliacion?: string;
     } & DefaultSession["user"];
   }
 }

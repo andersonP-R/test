@@ -1,62 +1,61 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { useFormState, useFormStatus } from "react-dom";
-
-import { authenticate } from "@/actions";
-import { IoInformationOutline } from "react-icons/io5";
 import clsx from "clsx";
 
+import { login } from "@/actions";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type FormInputs = {
+  email: string;
+  password: string;
+};
+
 export const LoginForm = () => {
-  // const router = useRouter();
-  const [state, dispatch] = useFormState(authenticate, undefined);
+  const [errorMessage, setErrorMessage] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormInputs>();
 
-  console.log(state);
+  const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+    setErrorMessage("");
+    const { email, password } = data;
 
-  useEffect(() => {
-    if (state === "Success") {
-      // redireccionar
-      // router.replace('/');
-      window.location.replace("/");
+    const res = await login(email, password);
+
+    if (res.ok === false) {
+      setErrorMessage(res.message!);
     }
-  }, [state]);
+
+    window.location.reload();
+  };
 
   return (
-    <form action={dispatch} className="flex flex-col">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
       <label htmlFor="email">Correo electrónico</label>
       <input
-        className="px-5 py-2 border bg-gray-200 rounded mb-5"
+        className={clsx("px-5 py-2 border bg-gray-200 rounded mb-5", {
+          "border-red-500": errors.email,
+        })}
         type="email"
-        name="email"
+        {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
       />
 
-      <label htmlFor="email">Contraseña</label>
+      <label htmlFor="password">Contraseña</label>
       <input
-        className="px-5 py-2 border bg-gray-200 rounded mb-5"
+        className={clsx("px-5 py-2 border bg-gray-200 rounded mb-5", {
+          "border-red-500": errors.password,
+        })}
         type="password"
-        name="password"
+        {...register("password", { required: true, minLength: 6 })}
       />
 
-      <div
-        className="flex h-8 items-end space-x-1"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        {state === "CredentialsSignin" && (
-          <div className="flex flex-row mb-2">
-            <IoInformationOutline className="h-5 w-5 text-red-500" />
-            <p className="text-sm text-red-500">
-              Credenciales no son correctas
-            </p>
-          </div>
-        )}
-      </div>
+      <span className="text-red-500">{errorMessage} </span>
 
-      <LoginButton />
-      {/* <button type="submit" className="btn-primary">
-        Ingresar
-      </button> */}
+      <button className="btn-primary">Ingresar</button>
 
       {/* divisor l ine */}
       <div className="flex items-center my-5">
@@ -65,26 +64,9 @@ export const LoginForm = () => {
         <div className="flex-1 border-t border-gray-500"></div>
       </div>
 
-      <Link href="/auth/new-account" className="btn-secondary text-center">
+      <Link href="/auth/sign-up" className="btn-secondary text-center">
         Crear una nueva cuenta
       </Link>
     </form>
   );
 };
-
-function LoginButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button
-      type="submit"
-      className={clsx({
-        "btn-primary": !pending,
-        "btn-disabled": pending,
-      })}
-      disabled={pending}
-    >
-      Ingresar
-    </button>
-  );
-}

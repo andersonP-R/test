@@ -1,11 +1,11 @@
 "use client";
 
-import clsx from "clsx";
+import { useState } from "react";
 import Link from "next/link";
+import clsx from "clsx";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { login, registerUser } from "@/actions";
-import { useState } from "react";
 
 type FormInputs = {
   email: string;
@@ -73,7 +73,7 @@ export const RegisterForm = () => {
         <div className="flex-1 border-t border-gray-500"></div>
       </div>
 
-      <Link href="/auth/login" className="btn-secondary text-center">
+      <Link href="/auth/sign-in" className="btn-secondary text-center">
         Ingresar
       </Link>
     </form>

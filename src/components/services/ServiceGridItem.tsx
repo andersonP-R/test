@@ -5,22 +5,24 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IService } from "@/interfaces/IService";
+import { usePathname } from "next/navigation";
+import { currencyFormat } from "@/utils";
 
 interface Props {
   service: IService;
 }
 
 export const ServiceGridItem = ({ service }: Props) => {
-  const slug = service.nombre.split(" ").join("_").toLowerCase();
-  console.log(slug);
+  const currentPath = usePathname();
+  const pagePath = currentPath.split(" ").join("-").toLowerCase();
+
   const [displayImage, setDisplayImage] = useState(service.imagenes[0]);
 
   return (
-    <div className="rounded-md overflow-hidden fade-in">
-      {/* ARREGLAR LINKS */}
-      <Link href={`/product/${service.nombre}`}>
+    <div className=" flex flex-col rounded-md overflow-hidden fade-in sm:p-0 border border-gray-400">
+      <Link href={`${pagePath}/${service.slug}`}>
         <Image
-          src={`/products/${displayImage}`}
+          src={`/services/${displayImage}`}
           alt={service.imagenes[0]}
           className="w-full object-cover rounded"
           width={500}
@@ -30,14 +32,17 @@ export const ServiceGridItem = ({ service }: Props) => {
         />
       </Link>
 
-      <div className="p-4 flex flex-col">
+      <div className=" flex flex-col justify-between p-2 h-full">
+        <h1 className="h-[100px]">{service.nombre}</h1>
+        <span className="font-bold my-2 text-sm">
+          Desde ${currencyFormat(service.precios[0])}
+        </span>
         <Link
-          className="hover:text-blue-600"
-          href={`/product/${service.nombre}`}
+          className="sm:hover:bg-green-800 block text-center text-white rounded-lg p-1 font-thin bg-green-900"
+          href={`${pagePath}/${service.slug}`}
         >
-          {service.nombre}
+          Mas detalles
         </Link>
-        <span className="font-bold">${service.precios[0]}</span>
       </div>
     </div>
   );

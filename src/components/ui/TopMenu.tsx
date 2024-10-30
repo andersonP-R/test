@@ -6,9 +6,12 @@ import Image from "next/image";
 import { IoCartOutline, IoMenuOutline, IoSearchOutline } from "react-icons/io5";
 
 import { useUIStore } from "@/store";
+import CafamLogo from "./logos/CafamLogo";
+import clsx from "clsx";
 
 export const TopMenu = () => {
   const openSideMenu = useUIStore((state) => state.openSideMenu);
+  const [isScroll, setIsScroll] = useState(false);
 
   // const totalItemsInCart = useCartStore((state) => state.getTotalItems());
 
@@ -18,12 +21,25 @@ export const TopMenu = () => {
   //   setLoaded(true);
   // }, [])
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      window.scrollY > 30 ? setIsScroll(true) : setIsScroll(false);
+    });
+  }, [isScroll]);
+
   return (
-    <nav className="flex px-5 py-3 justify-between items-center w-full">
+    <nav
+      className={clsx(
+        "flex px-5 py-3 justify-between items-center w-full sticky top-0 z-10 bg-white transition-shadow",
+        {
+          "shadow-md shadow-[#00000060]": isScroll,
+        }
+      )}
+    >
       {/* Logo */}
       <div>
-        <Link href="/">
-          <Image src={"/logo.jpg"} alt={"logo-cafam"} width={60} height={30} />
+        <Link href="/inicio">
+          <CafamLogo />
         </Link>
       </div>
 
@@ -53,7 +69,11 @@ export const TopMenu = () => {
           </div>
         </Link> */}
 
-        <IoMenuOutline onClick={openSideMenu} className="ml-2" size={40} />
+        <IoMenuOutline
+          onClick={openSideMenu}
+          className="ml-2 cursor-pointer"
+          size={40}
+        />
       </div>
     </nav>
   );
