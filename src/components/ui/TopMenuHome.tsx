@@ -2,13 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import {
-  IoCartOutline,
-  IoMenuOutline,
-  IoPersonCircleOutline,
-  IoSearchOutline,
-} from "react-icons/io5";
+import { IoPersonCircleOutline, IoSearchOutline } from "react-icons/io5";
 
 import { useUIStore } from "@/store";
 import CafamLogo from "./logos/CafamLogo";
@@ -18,10 +12,18 @@ export const TopMenuHome = () => {
   const openSideMenu = useUIStore((state) => state.openSideMenu);
   const [isScroll, setIsScroll] = useState(false);
 
-  useEffect(() => {
+  const handleScroll = () => {
     window.addEventListener("scroll", () => {
-      window.scrollY > 30 ? setIsScroll(true) : setIsScroll(false);
+      if (window.scrollY > 30) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
     });
+  };
+
+  useEffect(() => {
+    handleScroll();
   }, [isScroll]);
 
   return (

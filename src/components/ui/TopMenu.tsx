@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { IoCartOutline, IoMenuOutline, IoSearchOutline } from "react-icons/io5";
 
 import { useUIStore } from "@/store";
@@ -13,18 +12,18 @@ export const TopMenu = () => {
   const openSideMenu = useUIStore((state) => state.openSideMenu);
   const [isScroll, setIsScroll] = useState(false);
 
-  // const totalItemsInCart = useCartStore((state) => state.getTotalItems());
-
-  // const [loaded, setLoaded] = useState(false);
-
-  // useEffect(() => {
-  //   setLoaded(true);
-  // }, [])
+  const handleScroll = () => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 30) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
+    });
+  };
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      window.scrollY > 30 ? setIsScroll(true) : setIsScroll(false);
-    });
+    handleScroll();
   }, [isScroll]);
 
   return (

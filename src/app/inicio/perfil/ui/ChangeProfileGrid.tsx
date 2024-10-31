@@ -49,7 +49,7 @@ export default function ChangeProfileGrid({ id }: Props) {
             <input
               type="file"
               name="image"
-              accept="image/png, image/jpeg, image/avif"
+              accept="image/*"
               className="p-2 border rounded"
               required
             />

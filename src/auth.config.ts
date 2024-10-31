@@ -10,9 +10,10 @@ export const authConfig: NextAuthConfig = {
     signIn: "/auth/login",
     newUser: "/auth/new-account",
   },
+  trustHost: true,
 
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
+    authorized({ auth, request: {} }) {
       console.log({ auth });
       // const isLoggedIn = !!auth?.user;
 
@@ -34,7 +35,7 @@ export const authConfig: NextAuthConfig = {
       return token;
     },
 
-    session({ session, token, user }) {
+    session({ session, token }) {
       session.user = token.data as any;
       return session;
     },

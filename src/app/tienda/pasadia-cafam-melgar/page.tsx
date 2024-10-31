@@ -1,7 +1,5 @@
 export const revalidate = 60; // 60 segundos
 
-import { redirect } from "next/navigation";
-
 import { Pagination, ServiceGrid } from "@/components";
 import { getPaginatedServices } from "@/actions";
 
@@ -15,7 +13,7 @@ export default async function PasadiaCafamPage({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
   const type = "pasadia cafam";
 
-  const { services, currentPage, totalPages } = await getPaginatedServices({
+  const { services, totalPages } = await getPaginatedServices({
     page,
     type,
   });

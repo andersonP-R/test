@@ -1,7 +1,4 @@
 // export const revalidate = 604800; //7 días
-import { Metadata, ResolvingMetadata } from "next";
-
-import { notFound } from "next/navigation";
 
 import { titleFont } from "@/config/fonts";
 import { ServiceMobileSlideshow } from "@/components";
@@ -9,6 +6,7 @@ import { getServiceBySlug } from "@/actions";
 import { auth } from "@/auth.config";
 import { checkUserCat, currencyFormat } from "@/utils";
 import Link from "next/link";
+import { Metadata } from "next/types";
 // import { AddToCart } from './ui/AddToCart';
 
 interface Props {
@@ -17,10 +15,7 @@ interface Props {
   };
 }
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
   const slug = params.slug;
 
@@ -47,13 +42,9 @@ export default async function ServiceBySlugPage({ params }: Props) {
   const categoryUser = session?.user.categoriaAfiliacion;
 
   // TODO: improve user checking category system to load prices according user category
-  const price = checkUserCat(categoryUser!, service?.precios!);
+  const price = checkUserCat(categoryUser || "", service?.precios!);
 
   console.log(session?.user);
-
-  if (!service) {
-    console.log("error");
-  }
 
   return (
     <div className="mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">

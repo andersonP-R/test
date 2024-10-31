@@ -11,7 +11,6 @@ import {
   IoPersonOutline,
   IoPricetagOutline,
   IoSearchOutline,
-  IoTicketOutline,
 } from "react-icons/io5";
 
 import { useUIStore } from "@/store";

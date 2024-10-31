@@ -1,6 +1,8 @@
 "use server";
 
 import prisma from "@/lib/prisma";
+import fs from "fs";
+import path from "path";
 
 export async function uploadImage(formData: FormData, id: string) {
   const file = formData.get("image") as File;
@@ -9,10 +11,6 @@ export async function uploadImage(formData: FormData, id: string) {
   console.log("Imagen recibida:", file.name);
 
   const buffer = await file.arrayBuffer(); // Leer el archivo como buffer
-  const base64Image = Buffer.from(buffer).toString("base64");
-  console.log(base64Image);
-  const fs = require("fs"); // Importar fs para guardar el archivo
-  const path = require("path"); // Importar path para manejar rutas
 
   const uploadsDir = path.join(process.cwd(), "public", "images");
 

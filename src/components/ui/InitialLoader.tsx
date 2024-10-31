@@ -4,7 +4,6 @@ import { AnimationControls, motion, useAnimation } from "framer-motion";
 import Spinner from "./Spinner";
 import { useEffect } from "react";
 import Link from "next/link";
-import CafamLogoMD from "./logos/CafamLogoMD";
 
 const icon = {
   hidden: {
@@ -31,7 +30,6 @@ const iconStroke = {
 export const InitialLoader = () => {
   const spinner: AnimationControls = useAnimation();
   const logo: AnimationControls = useAnimation();
-  const logoStroke: AnimationControls = useAnimation();
   const btn: AnimationControls = useAnimation();
 
   const test = 2;
@@ -65,7 +63,7 @@ export const InitialLoader = () => {
 
   useEffect(() => {
     timeLine();
-  }, []);
+  }, [spinner, logo, btn, test]);
 
   return (
     <motion.div className="h-screen w-screen bg-primary flex flex-col p-4 justify-center items-center">

@@ -42,6 +42,7 @@ export const getPaginatedServices = async ({
       services,
     };
   } catch (error) {
+    console.log(error);
     throw new Error("No se pudo cargar los productos");
   }
 };

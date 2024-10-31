@@ -15,7 +15,7 @@ export default async function EscuelasPage({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
   const type = "escuela deportiva";
 
-  const { services, currentPage, totalPages } = await getPaginatedServices({
+  const { services, totalPages } = await getPaginatedServices({
     page,
     type,
   });
