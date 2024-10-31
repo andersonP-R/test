@@ -1,10 +1,13 @@
 export * from "./ui/Aside";
 export * from "./ui/TopMenu";
+export * from "./ui/TopMenuHome";
 export * from "./ui/SideBar";
+export * from "./ui/SideBarHome";
 export * from "./ui/Footer";
 export * from "./ui/Pagination";
 export * from "./ui/InitialLoader";
 export * from "./ui/Spinner";
+export * from "./ui/Modal";
 
 export * from "./ui/logos/CafamLogo";
 export * from "./ui/logos/CafamLogoLetter";

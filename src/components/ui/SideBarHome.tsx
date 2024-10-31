@@ -5,11 +5,11 @@ import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import {
   IoCloseOutline,
-  IoFootballOutline,
   IoHomeOutline,
   IoLogInOutline,
   IoLogOutOutline,
   IoPersonOutline,
+  IoPricetagOutline,
   IoSearchOutline,
   IoTicketOutline,
 } from "react-icons/io5";
@@ -17,7 +17,7 @@ import {
 import { useUIStore } from "@/store";
 import { logout } from "@/actions";
 
-export const Sidebar = () => {
+export const SidebarHome = () => {
   const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen);
   const closeMenu = useUIStore((state) => state.closeSideMenu);
 
@@ -90,52 +90,16 @@ export const Sidebar = () => {
               <IoPersonOutline size={30} />
               <span className="ml-3 text-xl">Perfil</span>
             </Link>
-
-            <Link
-              href="/orders"
-              onClick={() => closeMenu()}
-              className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
-            >
-              <IoTicketOutline size={30} />
-              <span className="ml-3 text-xl">Ordenes</span>
-            </Link>
           </>
         )}
 
         <Link
-          href="/tienda/escuelas-deportivas"
+          href="/tienda"
           onClick={() => closeMenu()}
           className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
         >
-          <IoFootballOutline size={30} />
-          <span className="ml-3 text-xl">Escuelas deportivas</span>
-        </Link>
-
-        <Link
-          href="/tienda/practicas-libres"
-          onClick={() => closeMenu()}
-          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
-        >
-          <IoFootballOutline size={30} />
-          <span className="ml-3 text-xl">Practicas libres</span>
-        </Link>
-
-        <Link
-          href="/tienda/planes-gimnasio"
-          onClick={() => closeMenu()}
-          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
-        >
-          <IoFootballOutline size={30} />
-          <span className="ml-3 text-xl">Planes de gimnasio</span>
-        </Link>
-
-        <Link
-          href="/tienda/pasadia-cafam-melgar"
-          onClick={() => closeMenu()}
-          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
-        >
-          <IoFootballOutline size={30} />
-          <span className="ml-3 text-xl">Pasadia Cafam Melgar</span>
+          <IoPricetagOutline size={30} />
+          <span className="ml-3 text-xl">Tienda</span>
         </Link>
 
         {isAuthenticated && (

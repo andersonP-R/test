@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { login } from "@/actions";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { redirect, useRouter } from "next/navigation";
 
 type FormInputs = {
   email: string;
@@ -14,6 +15,7 @@ type FormInputs = {
 
 export const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -26,9 +28,11 @@ export const LoginForm = () => {
 
     const res = await login(email, password);
 
-    if (res.ok === false) {
-      setErrorMessage(res.message!);
-    }
+    console.log(res);
+
+    // if (res.ok === false) {
+    //   setErrorMessage(res.message!);
+    // }
 
     window.location.reload();
   };

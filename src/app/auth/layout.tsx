@@ -9,7 +9,7 @@ export default async function ShopLayout({
   const session = await auth();
 
   if (session?.user) {
-    redirect("/");
+    redirect("/inicio");
   }
 
   return (
