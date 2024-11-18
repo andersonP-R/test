@@ -12,6 +12,7 @@ import { IoArrowBack, IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 type FormInputs = {
   email: string;
   password: string;
+  name: string;
   codeVerification: string;
 };
 
@@ -20,6 +21,7 @@ export const RegisterForm = () => {
   const [view, setView] = useState(1);
   const [emailState, setEmail] = useState("");
   const [passState, setPass] = useState("");
+  const [nameState, setName] = useState("");
 
   const [time, setTime] = useState({
     minutes: 1,
@@ -35,9 +37,10 @@ export const RegisterForm = () => {
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setErrorMessage("");
-    const { email, password } = data;
+    const { email, password, name } = data;
     setEmail(email.toLowerCase());
     setPass(password);
+    setName(name);
 
     // Server action
 
@@ -48,7 +51,7 @@ export const RegisterForm = () => {
   };
 
   const handlerSignUp = async () => {
-    const resp = await registerUser(emailState, passState);
+    const resp = await registerUser(emailState, passState, nameState);
 
     if (!resp.ok) {
       setErrorMessage(resp.message);
@@ -107,11 +110,20 @@ export const RegisterForm = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-1 fade-in"
           >
-            {/* {
-        errors.name?.type === 'required' && (
-          <span className="text-red-500">* El nombre es obligatorio</span>
-        )
-      } */}
+            <label htmlFor="name" className="text-sm text-primary">
+              Nombre
+            </label>
+            <input
+              className={clsx(
+                "p-2 border border-black rounded mb-5 outline-primary",
+                {
+                  "border-red-500": errors.email,
+                }
+              )}
+              type="text"
+              placeholder="Tu nombre"
+              {...register("name", { required: true })}
+            />
 
             <label htmlFor="email" className="text-sm text-primary">
               Dirección de correo electrónico
