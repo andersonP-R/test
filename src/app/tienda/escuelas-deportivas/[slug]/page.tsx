@@ -1,7 +1,11 @@
 // export const revalidate = 604800; //7 días
 
 import { titleFont } from "@/config/fonts";
-import { ServiceMobileSlideshow } from "@/components";
+import {
+  AddToCheckout,
+  ServiceMobileSlideshow,
+  ServiceTab,
+} from "@/components";
 import { getServiceBySlug } from "@/actions";
 import { auth } from "@/auth.config";
 import { checkUserCat, currencyFormat } from "@/utils";
@@ -44,8 +48,6 @@ export default async function ServiceBySlugPage({ params }: Props) {
   // TODO: improve user checking category system to load prices according user category
   const price = checkUserCat(categoryUser || "", service?.precios!);
 
-  console.log(session?.user);
-
   return (
     <div className="mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">
       {/* Slideshow */}
@@ -56,13 +58,6 @@ export default async function ServiceBySlugPage({ params }: Props) {
           images={service?.imagenes || []}
           className="block md:hidden"
         />
-
-        {/* Desktop Slideshow */}
-        {/* <ProductSlideshow
-          title={product.title}
-          images={product.images}
-          className="hidden md:block"
-        /> */}
       </div>
 
       {/* Detalles */}
@@ -76,14 +71,17 @@ export default async function ServiceBySlugPage({ params }: Props) {
 
         {/* <AddToCart product={ product } /> */}
         <div className="mb-4">
-          <Link href={"/checkout"} className="btn-primary">
-            Selecionar una sede
-          </Link>
+          <AddToCheckout slugService={slug} />
         </div>
 
         {/* Descripción */}
         <h3 className="font-bold text-lg">Descripción</h3>
-        <p className="font-light">{service?.descripcion}</p>
+        <p className="font-light mb-6">{service?.descripcion}</p>
+        <ServiceTab
+          objetivo={service?.objetivo || ""}
+          requisitos={service?.requisitos || []}
+          recomendaciones={service?.recomendaciones || []}
+        />
       </div>
     </div>
   );

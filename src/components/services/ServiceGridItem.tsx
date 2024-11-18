@@ -13,14 +13,13 @@ interface Props {
 }
 
 export const ServiceGridItem = ({ service }: Props) => {
-  const currentPath = usePathname();
-  const pagePath = currentPath.split(" ").join("-").toLowerCase();
+  const type = service.tipo.split(" ").join("-");
 
   const [displayImage, setDisplayImage] = useState(service.imagenes[0]);
 
   return (
     <div className=" flex flex-col rounded-md overflow-hidden fade-in sm:p-0 border border-gray-400">
-      <Link href={`${pagePath}/${service.slug}`}>
+      <Link href={`/tienda/${type}/${service.slug}`}>
         <Image
           src={`/services/${displayImage}`}
           alt={service.imagenes[0]}
@@ -39,7 +38,7 @@ export const ServiceGridItem = ({ service }: Props) => {
         </span>
         <Link
           className="sm:hover:bg-green-800 block text-center text-white rounded-lg p-1 font-thin bg-green-900"
-          href={`${pagePath}/${service.slug}`}
+          href={`/tienda/${type}/${service.slug}`}
         >
           Mas detalles
         </Link>

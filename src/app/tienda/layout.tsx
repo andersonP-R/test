@@ -12,10 +12,10 @@ export default function TiendaLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen">
+    <main className="">
       <TopMenu />
       <Sidebar />
-      <div className="sm:px-10 min-h-screen">{children}</div>
+      <div className="sm:px-10 p-2 min-h-screen">{children}</div>
       <Footer />
     </main>
   );

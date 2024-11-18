@@ -11,7 +11,7 @@ interface Props {
 
 export default async function PasadiaCafamPage({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
-  const type = "pasadia cafam";
+  const type = "pasadia-cafam-melgar";
 
   const { services, totalPages } = await getPaginatedServices({
     page,

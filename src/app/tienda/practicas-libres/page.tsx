@@ -13,7 +13,7 @@ interface Props {
 
 export default async function PracticaLibrePage({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
-  const type = "practica libre";
+  const type = "practicas-libres";
 
   const { services, totalPages } = await getPaginatedServices({
     page,

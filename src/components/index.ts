@@ -8,6 +8,12 @@ export * from "./ui/Pagination";
 export * from "./ui/InitialLoader";
 export * from "./ui/Spinner";
 export * from "./ui/Modal";
+export * from "./ui/NavMobile";
+export * from "./ui/ImageIcon";
+export * from "./ui/SlideShowGeneral";
+export * from "./ui/Card";
+export * from "./ui/BackButton";
+export * from "./ui/AddToCheckout";
 
 export * from "./ui/logos/CafamLogo";
 export * from "./ui/logos/CafamLogoLetter";
@@ -19,3 +25,4 @@ export * from "./providers/Providers";
 export * from "./services/ServiceGrid";
 export * from "./services/ServiceGridItem";
 export * from "./services/MobileSlideShow";
+export * from "./services/ServiceTab";

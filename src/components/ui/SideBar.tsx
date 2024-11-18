@@ -30,7 +30,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <div>
+    <div className="">
       {/* Background black */}
       {isSideMenuOpen && (
         <div className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30" />
@@ -47,7 +47,7 @@ export const Sidebar = () => {
       {/* Sidemenu */}
       <nav
         className={clsx(
-          "fixed p-5 right-0 top-0 w-[350px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300",
+          "fixed p-5 right-0 top-0 w-[350px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300 overflow-y-scroll",
           {
             "translate-x-full": !isSideMenuOpen,
           }
@@ -127,15 +127,6 @@ export const Sidebar = () => {
         >
           <IoFootballOutline size={30} />
           <span className="ml-3 text-xl">Planes de gimnasio</span>
-        </Link>
-
-        <Link
-          href="/tienda/pasadia-cafam-melgar"
-          onClick={() => closeMenu()}
-          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
-        >
-          <IoFootballOutline size={30} />
-          <span className="ml-3 text-xl">Pasadia Cafam Melgar</span>
         </Link>
 
         {isAuthenticated && (

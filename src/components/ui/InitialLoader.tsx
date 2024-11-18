@@ -1,9 +1,10 @@
 "use client";
 
 import { AnimationControls, motion, useAnimation } from "framer-motion";
-import Spinner from "./Spinner";
-import { useEffect } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+// import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Spinner } from "@/components";
 
 const icon = {
   hidden: {
@@ -31,6 +32,14 @@ export const InitialLoader = () => {
   const spinner: AnimationControls = useAnimation();
   const logo: AnimationControls = useAnimation();
   const btn: AnimationControls = useAnimation();
+
+  const [isPosted, setIsPosted] = useState(false);
+  const router = useRouter();
+
+  const handlerClick = () => {
+    setIsPosted(true);
+    router.push("/inicio");
+  };
 
   const test = 2;
 
@@ -75,12 +84,13 @@ export const InitialLoader = () => {
         <Spinner />
       </motion.div>
 
-      <motion.div
-        className="btn-secondary"
-        initial={{ opacity: 0, y: -40 }}
-        animate={btn}
-      >
-        <Link href="/inicio">Ingresar</Link>
+      <motion.div initial={{ opacity: 0, y: -40 }} animate={btn}>
+        <button
+          onClick={handlerClick}
+          className="w-[120px] bg-white text-primary py-2 px-5 rounded-lg font-bold"
+        >
+          {isPosted ? <Spinner /> : "Ingresar"}
+        </button>
       </motion.div>
     </motion.div>
   );

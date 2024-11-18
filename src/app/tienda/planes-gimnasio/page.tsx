@@ -13,7 +13,7 @@ interface Props {
 
 export default async function PlanesGymPage({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
-  const type = "plan gimnasio";
+  const type = "planes-gimnasio";
 
   const { services, totalPages } = await getPaginatedServices({
     page,

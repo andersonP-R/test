@@ -31,7 +31,7 @@ export const login = async (email: string, password: string) => {
     console.log(error);
     return {
       ok: false,
-      message: "No se pudo iniciar sesión",
+      message: "Correo/contraseña incorrecta",
     };
   }
 };

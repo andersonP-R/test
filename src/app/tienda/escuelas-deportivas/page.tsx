@@ -13,7 +13,7 @@ interface Props {
 
 export default async function EscuelasPage({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
-  const type = "escuela deportiva";
+  const type = "escuelas-deportivas";
 
   const { services, totalPages } = await getPaginatedServices({
     page,
