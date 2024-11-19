@@ -2,33 +2,37 @@ import { ServiceItem } from "./ui/ServiceItem";
 
 export default function ServiciosPage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col fade-in">
       <span className="text-2xl mb-4">Todos los servicios</span>
       <div className="grid grid-cols-3 gap-4">
-        <ServiceItem icon="/tienda.png" title={"Tienda"} url={"/tienda"} />
+        <ServiceItem
+          icon="/tienda.png"
+          title={"Tiendas Cafam"}
+          url={"/tienda"}
+        />
         <ServiceItem
           icon="/educacion.png"
           title={"Educacion"}
           url={"/inicio/servicios/educacion"}
         />
 
-        <ServiceItem
+        {/* <ServiceItem
           icon="/salud.png"
           title={"Salud"}
           url={"/inicio/servicios/salud"}
-        />
+        /> */}
 
-        <ServiceItem
+        {/* <ServiceItem
           icon="/seguros.png"
           title={"Seguros"}
           url={"/inicio/servicios/seguros"}
-        />
+        /> */}
 
-        <ServiceItem
+        {/* <ServiceItem
           icon="/turismo.png"
           title={"Turismo"}
           url={"/inicio/servicios/turismo"}
-        />
+        /> */}
 
         <ServiceItem
           icon="/empleo.png"
@@ -37,10 +41,16 @@ export default function ServiciosPage() {
         />
 
         <ServiceItem
+          icon="/puntos-cafam.png"
+          title={"Puntos acumulables"}
+          url={"/inicio/servicios/puntos-acumulables"}
+        />
+
+        {/* <ServiceItem
           icon="/ocio.png"
           title={"Ocio y recreación"}
           url={"/inicio/servicios/ocio-recreacion"}
-        />
+        /> */}
       </div>
     </div>
   );
