@@ -38,7 +38,7 @@ export const NavMobile = () => {
         className={clsx(
           "flex flex-col items-center p-2 px-4 transition-all ease delay-150",
           {
-            "text-primary": url === "/inicio/servicios",
+            "text-primary": url.includes("servicios"),
           }
         )}
       >
@@ -46,7 +46,7 @@ export const NavMobile = () => {
         <span className="text-base">Servicios</span>
         <span
           className={clsx("w-full h-[2px] transition-all ease delay-150", {
-            "bg-primary": url === "/inicio/servicios",
+            "bg-primary": url.includes("servicios"),
           })}
         ></span>
       </Link>
@@ -56,7 +56,7 @@ export const NavMobile = () => {
         className={clsx(
           "flex flex-col items-center p-2 px-4 transition-all ease delay-150",
           {
-            "text-primary": url === "/inicio/billeteras",
+            "text-primary": url.includes("billeteras"),
           }
         )}
       >
@@ -64,7 +64,7 @@ export const NavMobile = () => {
         <span className="text-base">Billeteras</span>
         <span
           className={clsx("w-full h-[2px] transition-all ease delay-150", {
-            "bg-primary": url === "/inicio/billeteras",
+            "bg-primary": url.includes("billeteras"),
           })}
         ></span>
       </Link>
@@ -74,7 +74,7 @@ export const NavMobile = () => {
         className={clsx(
           "flex flex-col items-center p-2 px-4 transition-all ease delay-150",
           {
-            "text-primary": url === "/inicio/perfil",
+            "text-primary": url.includes("perfil"),
           }
         )}
       >
@@ -82,7 +82,7 @@ export const NavMobile = () => {
         <span className="text-base">Perfil</span>
         <span
           className={clsx("w-full h-[2px] transition-all ease delay-150", {
-            "bg-primary": url === "/inicio/perfil",
+            "bg-primary": url.includes("perfil"),
           })}
         ></span>
       </Link>
