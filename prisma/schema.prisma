@@ -30,18 +30,20 @@ model User {
 }
 
 model Service {
-  id              String   @id @default(uuid())
-  nombre          String
-  descripcion     String
-  tipo            String
-  categorias      String[]
-  precios         Int[]
-  slug            String   @unique
-  objetivo        String
-  requisitos      String[] @default([])
-  recomendaciones String[] @default([])
-  fechaCreacion   String
-  imagenes        String[]
+  id               String   @id @default(uuid())
+  nombre           String
+  descripcion      String
+  tipo             String
+  categorias       String[]
+  precios          Int[]
+  slug             String   @unique
+  objetivo         String
+  requisitos       String[] @default([])
+  recomendaciones  String[] @default([])
+  fechaCreacion    String
+  imagenes         String[]
+  esCanjeable      Boolean  @default(false)
+  puntosCanjeables Int?
 }
 
 model Center {

@@ -11,6 +11,8 @@ interface SeedService {
   recomendaciones: string[];
   fechaCreacion: string;
   imagenes: string[];
+  esCanjeable: boolean;
+  puntosCanjeables?: number;
 }
 
 interface SeedUser {
@@ -76,6 +78,8 @@ export const initialData: SeedData = {
       ],
       fechaCreacion: "20/04/2023",
       imagenes: ["alevin_1.jpg", "alevin_2.jpg"],
+      esCanjeable: false,
+      puntosCanjeables: 0,
     },
     {
       nombre: "Escuela Natación Ambientación (nivel 1)",
@@ -97,6 +101,8 @@ export const initialData: SeedData = {
       ],
       fechaCreacion: "20/05/2023",
       imagenes: ["nata_ambi_1.jpg", "nata_ambi_2.jpg"],
+      esCanjeable: true,
+      puntosCanjeables: 200,
     },
     {
       nombre: "Escuela Natación Facatativa - Pre Estilos FUNDEC",
@@ -116,6 +122,8 @@ export const initialData: SeedData = {
       ],
       fechaCreacion: "10/05/2022",
       imagenes: ["fundec_1.jpg", "fundec_2.jpg"],
+      esCanjeable: false,
+      puntosCanjeables: 0,
     },
     {
       nombre: "Escuela Voleibol Avanzado",
@@ -138,6 +146,8 @@ export const initialData: SeedData = {
       ],
       fechaCreacion: "24/05/2022",
       imagenes: ["vol_1.jpg", "vol_2.jpg"],
+      esCanjeable: true,
+      puntosCanjeables: 500,
     },
     {
       nombre: "Escuela Tenis Avanzado",
@@ -161,6 +171,8 @@ export const initialData: SeedData = {
       ],
       fechaCreacion: "30/12/2021",
       imagenes: ["ten_1.jpg", "ten_2.jpg"],
+      esCanjeable: false,
+      puntosCanjeables: 0,
     },
     {
       nombre: "Escuela Taekwondo Avanzado",
@@ -184,6 +196,8 @@ export const initialData: SeedData = {
       ],
       fechaCreacion: "20/02/2024",
       imagenes: ["tak_1.jpg", "tak_2.jpg"],
+      esCanjeable: true,
+      puntosCanjeables: 300,
     },
     {
       nombre: "Billar - Club Campestre",
@@ -207,6 +221,8 @@ export const initialData: SeedData = {
       ],
       fechaCreacion: "23/06/2024",
       imagenes: ["bi_1.jpg", "bi_2.jpg"],
+      esCanjeable: true,
+      puntosCanjeables: 1000,
     },
     {
       nombre: "Bodytech Antares - Súper Año",
@@ -229,6 +245,8 @@ export const initialData: SeedData = {
       ],
       fechaCreacion: "27/10/2020",
       imagenes: ["gy_1.jpg", "gy_2.jpg"],
+      esCanjeable: false,
+      puntosCanjeables: 0,
     },
   ],
 };

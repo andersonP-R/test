@@ -1,7 +1,9 @@
-import { auth } from "@/auth.config";
-import { BackButton } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
+import { auth } from "@/auth.config";
+import { BackButton } from "@/components";
+import "../ui/services-styles.css";
+import { IoTrophyOutline } from "react-icons/io5";
 
 export default async function PuntosAcumulablesPage() {
   const session = await auth();
@@ -10,7 +12,7 @@ export default async function PuntosAcumulablesPage() {
     <div className="flex flex-col fade-in">
       <BackButton url={"/inicio/servicios"} />
       <div className="flex flex-col gap-2 text-center mb-8">
-        <span className="font-bold text-2xl text-primary-700">
+        <span className="font-bold text-2xl text-primary-800">
           Hola, {nombres}
         </span>
         <span className="font-light text-primary-700">
@@ -19,17 +21,31 @@ export default async function PuntosAcumulablesPage() {
         </span>
       </div>
 
-      <div className="w-full flex flex-col items-center justify-center mb-8">
+      <div className="w-full flex flex-col items-center justify-center mb-2">
         <Image
           src={"/badge.png"}
           alt={"badge"}
-          width={100}
-          height={100}
-          className="w-[100px] h-[100px]"
+          width={120}
+          height={120}
+          className="w-[120px] h-[120px]"
         />
-        <span className="text-green-900 uppercase mb-3">Nivel basico</span>
+        <span className="text-green-900 uppercase -mt-2">Nivel basico</span>
 
-        <span>barra progreso</span>
+        <div className="flex flex-col w-full">
+          <span className="text-[14px] font-thin self-end mr-1 text-primary-800">
+            400/500
+          </span>
+          <span id="progress-bar">
+            <span id="progress-fill"></span>
+          </span>
+        </div>
+      </div>
+
+      <div className="flex w-full px-2 items-center justify-center gap-2 mb-6 text-primary-700">
+        <IoTrophyOutline size={35} />
+        <span className="text-[14px] font-thin">
+          ¡Acumula puntos y sube de nivel para obtener mejores beneficios!
+        </span>
       </div>
 
       <div className="w-full flex justify-center mb-8">
@@ -41,8 +57,8 @@ export default async function PuntosAcumulablesPage() {
         </Link>
       </div>
 
-      <span className="font-bold text-xl text-primary-700 mb-4">Logros</span>
-      <div className="w-full flex flex-col gap-2">
+      <span className="font-bold text-xl text-primary-800 mb-4">Logros</span>
+      <div className="w-full flex flex-col gap-4">
         <div className="w-full flex gap-1 justify-between items-center border border-primary-700 rounded-lg p-2">
           <Image
             src={"/tienda.png"}

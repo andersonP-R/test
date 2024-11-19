@@ -7,3 +7,4 @@ export { uploadImage } from "./users/update-profile-pic";
 
 export { getPaginatedServices } from "./services/get-services-with-pagination";
 export { getServiceBySlug } from "./services/get-service-by-slug";
+export { getGiftServices } from "./services/get-gift-services";
