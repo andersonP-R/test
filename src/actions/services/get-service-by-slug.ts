@@ -5,6 +5,9 @@ import { SERVICES_MOCK } from "@/seed/mock-data";
 export const getServiceBySlug = async (slug: string) => {
   try {
     const s = SERVICES_MOCK.find((e) => e.slug === slug);
+    if (!s) {
+      return;
+    }
     return s;
   } catch (error) {
     console.log(error);
