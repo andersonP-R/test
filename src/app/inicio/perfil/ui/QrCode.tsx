@@ -6,7 +6,7 @@ import { Modal } from "@/components";
 import { useState } from "react";
 
 interface Props {
-  service: IService;
+  service: string;
 }
 
 export const QRcode = ({ service }: Props) => {
@@ -15,7 +15,7 @@ export const QRcode = ({ service }: Props) => {
   return (
     <div className="flex flex-col items-center gap-3 mb-2">
       <span className="font-bold text-xl text-primary-800 text-center">
-        {service?.nombre}
+        {service}
       </span>
       <div className="relative flex flex-col items-center w-[60%]">
         <Image

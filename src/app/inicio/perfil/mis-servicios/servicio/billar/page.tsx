@@ -1,26 +1,8 @@
-import { getServiceBySlug } from "@/actions";
-import { auth } from "@/auth.config";
 import { BackButton, TopMenuHome } from "@/components";
-import { checkUserCat, currencyFormat } from "@/utils";
 import { IoKeyOutline } from "react-icons/io5";
 import { QRcode } from "../../../ui/QrCode";
 
-interface Props {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function ServiceBySlugPage({ params }: Props) {
-  const { slug } = params;
-  const service = await getServiceBySlug(slug);
-
-  const session = await auth();
-  const categoryUser = session?.user.categoriaAfiliacion;
-
-  // TODO: improve user checking category system to load prices according user category
-  const price = checkUserCat(categoryUser || "", service?.precios!);
-
+export default async function BillarServicePage() {
   return (
     <div className="flex flex-col">
       <TopMenuHome />
@@ -34,7 +16,7 @@ export default async function ServiceBySlugPage({ params }: Props) {
           <div></div>
         </div>
 
-        <QRcode service={service!} />
+        <QRcode service={"Billar Club"} />
 
         <div className="flex w-full items-center justify-center gap-2 mb-6 text-primary-900">
           <span className="text-[14px] font-thin">Código de acceso</span>
@@ -47,15 +29,13 @@ export default async function ServiceBySlugPage({ params }: Props) {
         <div className="flex flex-col gap-4">
           <div className="flex justify-between border-b border-primary-800 pb-1">
             <span className="text-base text-primary-700">Precio</span>
-            <span className="text-base text-slate-600 font-bold">
-              ${currencyFormat(price)}
-            </span>
+            <span className="text-base text-slate-600 font-bold">$48.000</span>
           </div>
 
           <div className="flex justify-between border-b border-primary-800 pb-1">
             <span className="text-base text-primary-700">Tipo de servicio</span>
             <span className="text-base text-slate-600 font-bold">
-              {service?.tipo}
+              Practica libre
             </span>
           </div>
 
