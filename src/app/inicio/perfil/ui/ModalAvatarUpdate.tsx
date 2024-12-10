@@ -3,12 +3,7 @@
 import { Modal } from "@/components";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import {
-  IoCameraOutline,
-  IoClose,
-  IoHappyOutline,
-  IoPencil,
-} from "react-icons/io5";
+import { IoClose, IoHappyOutline, IoPencil } from "react-icons/io5";
 
 export const ModalAvatarUpdate = () => {
   const [isModalOpen, setModalOpen] = useState(false);

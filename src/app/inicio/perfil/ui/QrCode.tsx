@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
-import { IService } from "@/interfaces/IService";
 import { IoExpand, IoInformationCircleOutline } from "react-icons/io5";
 import { Modal } from "@/components";
 import { useState } from "react";
+import { IService } from "@/interfaces/IService";
 
 interface Props {
-  service: string;
+  service: IService;
 }
 
 export const QRcode = ({ service }: Props) => {
@@ -15,7 +15,7 @@ export const QRcode = ({ service }: Props) => {
   return (
     <div className="flex flex-col items-center gap-3 mb-2">
       <span className="font-bold text-xl text-primary-800 text-center">
-        {service}
+        {service.nombre}
       </span>
       <div className="relative flex flex-col items-center w-[60%]">
         <Image

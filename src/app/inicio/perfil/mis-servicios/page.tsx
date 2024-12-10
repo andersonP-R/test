@@ -40,7 +40,11 @@ export default async function MisServiciosPage() {
                 <IoLocationOutline size={18} />
                 <span className={`antialiased text-base`}>Club Campestre</span>
               </div>
-              <Link href={"/inicio/perfil/mis-servicios/servicio/billar"}>
+              <Link
+                href={
+                  "/inicio/perfil/mis-servicios/servicio/billar_club_campestre"
+                }
+              >
                 <div className="flex gap-1 items-center">
                   <IoArrowRedoOutline size={18} />
                   <span className="underline">Ver detalles</span>
@@ -76,7 +80,11 @@ export default async function MisServiciosPage() {
                 <IoLocationOutline size={18} />
                 <span className={`antialiased text-base`}>Colégio Cafam</span>
               </div>
-              <Link href={"/inicio/perfil/mis-servicios/servicio/gym"}>
+              <Link
+                href={
+                  "/inicio/perfil/mis-servicios/servicio/bodytech_antares_super_ano"
+                }
+              >
                 <div className="flex gap-1 items-center">
                   <IoArrowRedoOutline size={18} />
                   <span className="underline">Ver detalles</span>

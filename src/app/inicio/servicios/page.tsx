@@ -1,16 +1,15 @@
+import Link from "next/link";
 import { ServiceGrid, SlideShow, TopNavTienda } from "@/components";
 import { DestacadosShop } from "./ui/DestacadosShop";
 import { CategoriasTienda } from "./ui/CategoriasTienda";
 import { OfertaDelDia } from "./ui/OfertaDelDia";
-import { getPaginatedServices } from "@/actions";
-import Link from "next/link";
-import Image from "next/image";
 import { BienestarSlide } from "./ui/EspiralSlide";
+import { SERVICES_MOCK } from "@/seed/mock-data";
 
 const images = ["/images/plus.png", "/images/b2.jpg", "/images/b3.jpg"];
 
 export default async function TiendaPage() {
-  const { services } = await getPaginatedServices();
+  const services = SERVICES_MOCK;
 
   return (
     <div className="flex flex-col fade-in">

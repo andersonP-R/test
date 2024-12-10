@@ -1,12 +1,7 @@
 import { auth } from "@/auth.config";
 import Image from "next/image";
-import {
-  IoFingerPrintOutline,
-  IoGridOutline,
-  IoTrophyOutline,
-} from "react-icons/io5";
+import { IoFingerPrintOutline, IoGridOutline } from "react-icons/io5";
 import Link from "next/link";
-import { BtnCardListProfile } from "./ui/BtnCardListProfile";
 import { TopMenuHome } from "@/components";
 import { LogOutBtnProfile } from "./ui/LogOutBtnProfile";
 

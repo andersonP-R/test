@@ -1,7 +1,7 @@
-import { getServiceBySlug } from "@/actions";
 import { auth } from "@/auth.config";
 import { SelectCenter, TopNavTiendaItem } from "@/components";
 import { titleFont } from "@/config/fonts";
+import { SERVICES_MOCK } from "@/seed/mock-data";
 import { checkUserCat, currencyFormat } from "@/utils";
 import Image from "next/image";
 
@@ -13,7 +13,7 @@ interface Props {
 
 export default async function CheckoutBySlugPage({ params }: Props) {
   const { slug } = params;
-  const service = await getServiceBySlug(slug);
+  const service = SERVICES_MOCK.find((e) => e.slug === slug);
 
   const session = await auth();
   const categoryUser = session?.user.categoriaAfiliacion;

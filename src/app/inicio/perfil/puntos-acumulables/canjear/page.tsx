@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { BackButton, TopMenuHome } from "@/components";
-import { getGiftServices } from "@/actions";
 import Link from "next/link";
 import { IoHelpCircleOutline } from "react-icons/io5";
+import { SERVICES_MOCK } from "@/seed/mock-data";
 
 export default async function CanjearPage() {
-  const services = await getGiftServices();
+  const services = SERVICES_MOCK.filter((e) => e.esCanjeable);
 
   return (
     <div className="flex flex-col">

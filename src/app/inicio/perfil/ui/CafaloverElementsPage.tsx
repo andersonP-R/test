@@ -21,10 +21,12 @@ export const CafaloverElementsPage = () => {
   }, [badge]);
 
   useEffect(() => {
-    window.scrollTo({
-      top: 2999,
-      behavior: "smooth",
-    });
+    setTimeout(() => {
+      window.scrollTo({
+        top: 2999,
+        behavior: "smooth",
+      });
+    }, 1000);
   }, []);
 
   return (

@@ -1,8 +1,23 @@
 import { BackButton, TopMenuHome } from "@/components";
 import { IoKeyOutline } from "react-icons/io5";
 import { QRcode } from "../../../ui/QrCode";
+import { SERVICES_MOCK } from "@/seed/mock-data";
+import { auth } from "@/auth.config";
+import { checkUserCat, currencyFormat } from "@/utils";
 
-export default async function BillarServicePage() {
+interface Props {
+  params: {
+    slug: string;
+  };
+}
+
+export default async function ServiceBySlugPage({ params }: Props) {
+  const { slug } = params;
+  const service = SERVICES_MOCK.find((e) => e.slug === slug);
+  const session = await auth();
+  const categoryUser = session?.user.categoriaAfiliacion;
+  const price = checkUserCat(categoryUser || "", service?.precios!);
+
   return (
     <div className="flex flex-col">
       <TopMenuHome />
@@ -16,7 +31,7 @@ export default async function BillarServicePage() {
           <div></div>
         </div>
 
-        <QRcode service={"Billar Club"} />
+        <QRcode service={service!} />
 
         <div className="flex w-full items-center justify-center gap-2 mb-6 text-primary-900">
           <span className="text-[14px] font-thin">Código de acceso</span>
@@ -29,13 +44,15 @@ export default async function BillarServicePage() {
         <div className="flex flex-col gap-4">
           <div className="flex justify-between border-b border-primary-800 pb-1">
             <span className="text-base text-primary-700">Precio</span>
-            <span className="text-base text-slate-600 font-bold">$48.000</span>
+            <span className="text-base text-slate-600 font-bold">
+              ${currencyFormat(price)}
+            </span>
           </div>
 
           <div className="flex justify-between border-b border-primary-800 pb-1">
             <span className="text-base text-primary-700">Tipo de servicio</span>
             <span className="text-base text-slate-600 font-bold">
-              Practica libre
+              {service?.tipo}
             </span>
           </div>
 
