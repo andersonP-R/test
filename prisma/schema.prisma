@@ -27,6 +27,8 @@ model User {
   // logros
   // objetos
   // carnetVirtual
+
+  Order Order[]
 }
 
 model Service {
@@ -50,13 +52,24 @@ model Center {
   id          String @id @default(uuid())
   nombre      String
   direccion   String
-  rangoEdad   String
-  ciclo       Int
-  nivel       String
+  // rangoEdad   String
+  // ciclo       Int
+  // nivel       String
   numeroCupos Int
-  fechaInicio String
-  fechaFin    String
+  // fechaInicio String
+  // fechaFin    String
   horario     String
 
   imagenes String[]
+}
+
+model Order {
+  id          String  @id @default(uuid())
+  isPaid      Boolean @default(false)
+  total       Float
+  fechaInicio String
+  fechaFin    String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
 }

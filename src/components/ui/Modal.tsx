@@ -1,10 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { IoCloseOutline } from "react-icons/io5";
 
 interface ModalProps {
   isOpen: boolean;
+
   onClose: () => void;
   children: React.ReactNode;
 }
@@ -37,20 +37,14 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => (
 
         {/* Modal Content */}
         <motion.div
-          className="fixed inset-0 flex items-center justify-center"
+          className="fixed inset-0 flex items-center justify-center px-4"
           variants={modalVariants}
           initial="hidden"
           animate="visible"
           exit="exit"
           transition={{ duration: 0.3 }}
         >
-          <div className="bg-white p-4 rounded-lg shadow-lg relative">
-            <button
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
-              onClick={onClose}
-            >
-              <IoCloseOutline size={25} />
-            </button>
+          <div className="bg-white p-4 rounded-lg shadow-lg flex flex-col items-center gap-4">
             {children}
           </div>
         </motion.div>

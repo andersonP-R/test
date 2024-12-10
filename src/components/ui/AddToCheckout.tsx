@@ -13,13 +13,13 @@ export const AddToCheckout = ({ slugService }: Props) => {
 
   const handleCheck = () => {
     setIsPosted(true);
-    router.push(`/tienda/checkout/${slugService}`);
+    router.push(`/inicio/servicios/tienda/checkout/${slugService}`);
   };
 
   return (
     <button
       onClick={handleCheck}
-      className="w-[180px] bg-[#2288F7] text-white py-2 px-5 rounded-3xl self-center mb-8"
+      className="w-[180px] bg-primary-700 text-white py-2 px-5 rounded-3xl self-center mb-8"
     >
       {isPosted ? <Spinner /> : "Seleccionar sede"}
     </button>

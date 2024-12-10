@@ -25,7 +25,7 @@ export const SlideShow = ({ images, title, className }: Props) => {
         }}
         pagination
         autoplay={{
-          delay: 2500,
+          delay: 4000,
         }}
         modules={[FreeMode, Autoplay, Pagination]}
         className="mySwiper2"
@@ -38,7 +38,7 @@ export const SlideShow = ({ images, title, className }: Props) => {
               // loading="lazy"
               src={`${image}`}
               alt={title}
-              className="object-fill w-auto h-auto"
+              className="object-fill w-full px-2 rounded-3xl"
             />
           </SwiperSlide>
         ))}

@@ -6,7 +6,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { login, registerUser } from "@/actions";
+import { login } from "@/actions";
 import { IoArrowBack, IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 type FormInputs = {
@@ -39,7 +39,7 @@ export const RegisterForm = () => {
     setErrorMessage("");
     const { email, password, name } = data;
     setEmail(email.toLowerCase());
-    setPass(password);
+    setPass("123456");
     setName(name);
 
     // Server action
@@ -51,12 +51,12 @@ export const RegisterForm = () => {
   };
 
   const handlerSignUp = async () => {
-    const resp = await registerUser(emailState, passState, nameState);
+    // const resp = await registerUser(emailState, passState, nameState);
 
-    if (!resp.ok) {
-      setErrorMessage(resp.message);
-      return;
-    }
+    // if (!resp.ok) {
+    //   setErrorMessage(resp.message);
+    //   return;
+    // }
 
     await login(emailState, passState);
     window.location.reload();

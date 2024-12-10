@@ -4,6 +4,8 @@ import Link from "next/link";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import {
+  IoAccessibilityOutline,
+  IoBarbellOutline,
   IoCloseOutline,
   IoFootballOutline,
   IoHomeOutline,
@@ -11,6 +13,7 @@ import {
   IoLogOutOutline,
   IoPersonOutline,
   IoSearchOutline,
+  IoStorefrontOutline,
   IoTicketOutline,
 } from "react-icons/io5";
 
@@ -92,12 +95,12 @@ export const Sidebar = () => {
             </Link>
 
             <Link
-              href="/orders"
+              href="/inicio/perfil/mis-servicios"
               onClick={() => closeMenu()}
               className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
             >
               <IoTicketOutline size={30} />
-              <span className="ml-3 text-xl">Ordenes</span>
+              <span className="ml-3 text-xl">Servicios adquiridos</span>
             </Link>
           </>
         )}
@@ -116,7 +119,7 @@ export const Sidebar = () => {
           onClick={() => closeMenu()}
           className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
         >
-          <IoFootballOutline size={30} />
+          <IoAccessibilityOutline size={30} />
           <span className="ml-3 text-xl">Practicas libres</span>
         </Link>
 
@@ -125,8 +128,17 @@ export const Sidebar = () => {
           onClick={() => closeMenu()}
           className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
         >
-          <IoFootballOutline size={30} />
+          <IoBarbellOutline size={30} />
           <span className="ml-3 text-xl">Planes de gimnasio</span>
+        </Link>
+
+        <Link
+          href="/tienda"
+          onClick={() => closeMenu()}
+          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+        >
+          <IoStorefrontOutline size={30} />
+          <span className="ml-3 text-xl">Todos los escenarios</span>
         </Link>
 
         {isAuthenticated && (

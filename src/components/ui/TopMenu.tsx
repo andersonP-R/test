@@ -29,7 +29,7 @@ export const TopMenu = () => {
   return (
     <nav
       className={clsx(
-        "flex px-5 py-3 justify-between items-center w-full sticky top-0 z-10 bg-white transition-shadow",
+        "flex px-5 py-3 justify-between items-center w-full sticky top-0 bg-white z-10 h-[60px] transition-shadow",
         {
           "shadow-md shadow-[#00000060]": isScroll,
         }
@@ -44,14 +44,14 @@ export const TopMenu = () => {
 
       {/* Search, Cart, Menu */}
       <div className="flex items-center">
-        <Link href="/search" className="mx-2">
+        {/* <Link href="/search" className="mx-2">
           <IoSearchOutline size={30} />
-        </Link>
+        </Link> */}
 
         {/* fix total courses in cart shopping */}
-        <Link href="/cart" className="mx-2">
+        {/* <Link href="/cart" className="mx-2">
           <IoCartOutline size={30} />
-        </Link>
+        </Link> */}
 
         {/* <Link href={
           ( (totalItemsInCart === 0 ) && loaded )

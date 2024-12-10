@@ -1,34 +1,24 @@
 "use client";
 
-import { useState } from "react";
-
 import Image from "next/image";
 import Link from "next/link";
-import { IService } from "@/interfaces/IService";
 import { currencyFormat } from "@/utils";
+import { IService2 } from "@/seed/mock-data";
 
 interface Props {
-  service: IService;
+  service: IService2;
 }
 
 export const ServiceGridItem = ({ service }: Props) => {
-  const type = service.tipo.split(" ").join("-");
-
-  const [displayImage, setDisplayImage] = useState(service.imagenes[0]);
-
   return (
     <div className=" flex flex-col rounded-md overflow-hidden fade-in sm:p-0 border border-gray-400">
-      <Link href={`/tienda/${type}/${service.slug}`}>
-        <Image
-          src={`/services/${displayImage}`}
-          alt={service.imagenes[0]}
-          className="w-full object-cover rounded"
-          width={500}
-          height={500}
-          onMouseEnter={() => setDisplayImage(service.imagenes[1])}
-          onMouseLeave={() => setDisplayImage(service.imagenes[0])}
-        />
-      </Link>
+      <Image
+        src={`/services/${service.imagenes[0]}`}
+        alt={service.imagenes[0]}
+        className="w-full object-cover rounded"
+        width={500}
+        height={500}
+      />
 
       <div className=" flex flex-col justify-between p-2 h-full">
         <h1 className="h-[100px]">{service.nombre}</h1>
@@ -37,9 +27,9 @@ export const ServiceGridItem = ({ service }: Props) => {
         </span>
         <Link
           className="sm:hover:bg-green-800 block text-center text-white rounded-lg p-1 font-thin bg-green-900"
-          href={`/tienda/${type}/${service.slug}`}
+          href={`/inicio/servicios/tienda/${service.slug}`}
         >
-          Mas detalles
+          Comprar
         </Link>
       </div>
     </div>

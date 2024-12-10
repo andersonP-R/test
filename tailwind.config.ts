@@ -10,8 +10,12 @@ const config: Config = {
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "canvas-bg": "url('/images/canvas2.jpg')",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-primary": "linear-gradient(180deg, #043060 0%, #ffff 100%)",
+        "gradient-btn":
+          "linear-gradient(100deg, rgba(36,0,0,1) 0%, rgba(121,9,45,1) 44%, rgba(0,212,255,1) 100%)",
       },
       colors: {
         primary: "#0650A0",

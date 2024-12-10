@@ -8,12 +8,13 @@ import {
   IoHomeOutline,
   IoPersonOutline,
   IoSettingsOutline,
+  IoStorefrontOutline,
 } from "react-icons/io5";
 export const NavMobile = () => {
   const url = usePathname();
 
   return (
-    <div className="flex justify-between w-full h-[70px] fixed bottom-0 bg-[#dddddd]">
+    <div className="flex justify-between w-full h-[70px] fixed bottom-0 z-10 bg-white rounded-tl-2xl rounded-tr-2xl shadow-slate-400 shadow-inner">
       <Link
         id="inicio-btn"
         href="/inicio"
@@ -38,15 +39,15 @@ export const NavMobile = () => {
         className={clsx(
           "flex flex-col items-center p-2 px-4 transition-all ease delay-150",
           {
-            "text-primary": url.includes("servicios"),
+            "text-primary": url.includes("/inicio/servicios"),
           }
         )}
       >
-        <IoSettingsOutline size={25} />
-        <span className="text-base">Servicios</span>
+        <IoStorefrontOutline size={25} />
+        <span className="text-base">Tienda</span>
         <span
           className={clsx("w-full h-[2px] transition-all ease delay-150", {
-            "bg-primary": url.includes("servicios"),
+            "bg-primary": url.includes("/inicio/servicios"),
           })}
         ></span>
       </Link>
@@ -56,15 +57,15 @@ export const NavMobile = () => {
         className={clsx(
           "flex flex-col items-center p-2 px-4 transition-all ease delay-150",
           {
-            "text-primary": url.includes("billeteras"),
+            "text-primary": url.includes("/inicio/billeteras"),
           }
         )}
       >
         <IoCardOutline size={25} />
-        <span className="text-base">Billeteras</span>
+        <span className="text-base">Billetera</span>
         <span
           className={clsx("w-full h-[2px] transition-all ease delay-150", {
-            "bg-primary": url.includes("billeteras"),
+            "bg-primary": url.includes("/inicio/billeteras"),
           })}
         ></span>
       </Link>
@@ -74,7 +75,7 @@ export const NavMobile = () => {
         className={clsx(
           "flex flex-col items-center p-2 px-4 transition-all ease delay-150",
           {
-            "text-primary": url.includes("perfil"),
+            "text-primary": url.includes("/inicio/perfil"),
           }
         )}
       >
@@ -82,7 +83,7 @@ export const NavMobile = () => {
         <span className="text-base">Perfil</span>
         <span
           className={clsx("w-full h-[2px] transition-all ease delay-150", {
-            "bg-primary": url.includes("perfil"),
+            "bg-primary": url.includes("/inicio/perfil"),
           })}
         ></span>
       </Link>

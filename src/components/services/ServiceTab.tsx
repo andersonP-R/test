@@ -29,25 +29,34 @@ export const ServiceTab = ({
       <div className="flex justify-between border-b border-black">
         <button
           onClick={() => handleChangeState(1)}
-          className={clsx("p-2 rounded-tl-lg rounded-tr-lg flex-auto mr-1", {
-            "text-white bg-primary": view === 1,
-          })}
+          className={clsx(
+            "p-2 rounded-tl-lg rounded-tr-lg flex-auto mr-1 text-slate-700",
+            {
+              "text-white bg-primary-700": view === 1,
+            }
+          )}
         >
           Objetivo
         </button>
         <button
           onClick={() => handleChangeState(2)}
-          className={clsx("p-2 rounded-tl-lg rounded-tr-lg flex-auto mr-1", {
-            "text-white bg-primary": view === 2,
-          })}
+          className={clsx(
+            "p-2 rounded-tl-lg rounded-tr-lg flex-auto mr-1 text-slate-700",
+            {
+              "text-white bg-primary-700": view === 2,
+            }
+          )}
         >
           Requisitos
         </button>
         <button
           onClick={() => handleChangeState(3)}
-          className={clsx("p-2 rounded-tl-lg rounded-tr-lg flex-auto", {
-            "text-white bg-primary": view === 3,
-          })}
+          className={clsx(
+            "p-2 rounded-tl-lg rounded-tr-lg flex-auto text-slate-700",
+            {
+              "text-white bg-primary-700": view === 3,
+            }
+          )}
         >
           Recomendaciones
         </button>
@@ -57,14 +66,16 @@ export const ServiceTab = ({
       <div className="flex flex-col">
         {view === 1 && (
           <>
-            <div className="fade-in p-2">{objetivo}</div>
+            <div className="fade-in p-2 text-primary-900 leading-7">
+              {objetivo}
+            </div>
           </>
         )}
 
         {view === 2 && (
           <>
             {requisitos.map((e) => (
-              <span key={e} className="fade-in p-2">
+              <span key={e} className="fade-in p-2 text-primary-900 leading-7">
                 - {e}
               </span>
             ))}
@@ -74,7 +85,7 @@ export const ServiceTab = ({
         {view === 3 && (
           <>
             {recomendaciones.map((e) => (
-              <span key={e} className="fade-in p-2">
+              <span key={e} className="fade-in p-2 text-primary-900 leading-7">
                 - {e}
               </span>
             ))}

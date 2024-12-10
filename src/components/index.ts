@@ -13,7 +13,9 @@ export * from "./ui/ImageIcon";
 export * from "./ui/SlideShowGeneral";
 export * from "./ui/Card";
 export * from "./ui/BackButton";
+export * from "./ui/BackButton2";
 export * from "./ui/AddToCheckout";
+export * from "./ui/CompleteProfile";
 
 export * from "./ui/logos/CafamLogo";
 export * from "./ui/logos/CafamLogoLetter";
@@ -26,3 +28,10 @@ export * from "./services/ServiceGrid";
 export * from "./services/ServiceGridItem";
 export * from "./services/MobileSlideShow";
 export * from "./services/ServiceTab";
+export * from "./services/SelectCenter";
+export * from "./services/SelectCenterGifts";
+export * from "./services/RecomendationsSlide";
+
+export * from "./tienda/TopNavTienda";
+export * from "./tienda/TopNavTiendaFilters";
+export * from "./tienda/TopNavTiendaItem";

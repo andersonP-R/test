@@ -1,13 +1,22 @@
 "use client";
-import { BackButton } from "@/components";
+import { BackButton, TopMenuHome } from "@/components";
 import { useEffect, useState } from "react";
 import {
   IoChatboxEllipsesOutline,
+  IoHelpCircleOutline,
   IoInformationCircleOutline,
   IoRefresh,
 } from "react-icons/io5";
 
-export default function CajerosPage() {
+interface Props {
+  searchParams: {
+    prevPage?: string;
+  };
+}
+
+export default function CajerosPage({ searchParams }: Props) {
+  const prevPage = searchParams.prevPage;
+
   const [time, setTime] = useState({
     minutes: 29,
     seconds: 59,
@@ -34,43 +43,53 @@ export default function CajerosPage() {
   }, [time]);
 
   return (
-    <div className="flex flex-col fade-in">
-      <BackButton url={"/inicio/billeteras/retiros"} />
-      <div className="flex flex-col gap-2 text-center mb-8">
-        <span className="font-light text-primary-700">
-          Escribe este código en el cajero para sacar la plata
-        </span>
-      </div>
+    <div className="flex flex-col">
+      <TopMenuHome />
+      <div className="flex flex-col fade-in px-4">
+        <div className="flex justify-between items-center mb-4">
+          <BackButton url={prevPage ?? "/inicio/billeteras/retiros"} />
+          <span className="text-primary-700 font-bold text-xl">Cajeros</span>
 
-      <span className="text-center p-2 border border-black rounded outline-primary bg-slate-50 mb-2">
-        213213{" "}
-      </span>
-      <span className="text-center text-primary-700 mb-8">
-        Tu codigo vence en:{" "}
-        <span className="text-sm">
-          {String(time.minutes).padStart(2, "0")}:
-          {String(time.seconds).padStart(2, "0")}
-        </span>{" "}
-        min
-      </span>
-      <div className="flex gap-2 items-center mb-5 text-primary-700">
-        <IoChatboxEllipsesOutline size={40} />
-        <span className="font-light">
-          Tambien te enviamos el código a tu telefono a través de un SMS
-        </span>
-      </div>
+          <div className="bg-slate-200 p-3 w-max rounded-full">
+            <IoHelpCircleOutline size={25} className="text-slate-700" />
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 text-center mb-8">
+          <span className="font-light text-primary-700">
+            Escribe este código en el cajero para sacar la plata
+          </span>
+        </div>
 
-      <div className="flex gap-2 items-center mb-5 text-primary-700">
-        <IoInformationCircleOutline size={30} />
-        <span className="font-light">
-          No compartas este código con otras personas
+        <span className="text-center p-2 border border-black rounded outline-primary bg-slate-50 mb-2">
+          213213{" "}
         </span>
-      </div>
-      <div className="flex gap-2 items-center mb-2 text-primary-700">
-        <IoRefresh size={30} />
-        <span className="font-light">
-          Si tu código vence puedes solicitar uno nuevo
+        <span className="text-center text-primary-700 mb-8">
+          Tu codigo vence en:{" "}
+          <span className="text-sm">
+            {String(time.minutes).padStart(2, "0")}:
+            {String(time.seconds).padStart(2, "0")}
+          </span>{" "}
+          min
         </span>
+        <div className="flex gap-2 items-center mb-5 text-primary-700">
+          <IoChatboxEllipsesOutline size={40} />
+          <span className="font-light">
+            Tambien te enviamos el código a tu telefono a través de un SMS
+          </span>
+        </div>
+
+        <div className="flex gap-2 items-center mb-5 text-primary-700">
+          <IoInformationCircleOutline size={30} />
+          <span className="font-light">
+            No compartas este código con otras personas
+          </span>
+        </div>
+        <div className="flex gap-2 items-center mb-2 text-primary-700">
+          <IoRefresh size={30} />
+          <span className="font-light">
+            Si tu código vence puedes solicitar uno nuevo
+          </span>
+        </div>
       </div>
     </div>
   );

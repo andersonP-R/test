@@ -1,42 +1,53 @@
-import { BackButton } from "@/components";
-import Link from "next/link";
-import { IoBusOutline, IoPhonePortraitOutline } from "react-icons/io5";
+import { BackButton, TopMenuHome } from "@/components";
+import { IoHelpCircleOutline, IoPhonePortraitOutline } from "react-icons/io5";
+import { RetirosCard } from "../ui/RetirosCard";
 
-export default function RecargasPage() {
+interface Props {
+  searchParams: {
+    prevPage?: string;
+  };
+}
+
+export default function RecargasPage({ searchParams }: Props) {
+  const prevPage = searchParams.prevPage;
+
   return (
-    <div className="flex flex-col fade-in">
-      <BackButton url={"/inicio/billeteras"} />
-      <div className="flex flex-col gap-2 text-center mb-8">
-        <span className="font-bold text-2xl text-primary-700">Recargas</span>
-        <span className="font-light text-primary-700">
-          ¡Aquí puedes recargar el saldo de tu telefono, tarjetas de transporte
-          y más!
-        </span>
-      </div>
+    <div className="flex flex-col">
+      <TopMenuHome />
+      <div className="flex flex-col fade-in px-4">
+        <div className="flex justify-between items-center mb-4">
+          <BackButton url={prevPage ?? "/inicio/billeteras"} />
+          <span className="text-primary-700 font-bold text-xl">Recargas</span>
 
-      <div className="flex flex-col gap-2">
-        {/* <span className="font-light text-primary-700">Puedes retirar en:</span> */}
-        <Link
-          className="flex items-start justify-between mb-2 gap-2 border border-primary-700 p-2 rounded-lg bg-slate-200"
-          href={"/inicio/billeteras/recargas/celular"}
-        >
-          <div className="flex flex-col">
-            <span className="font-bold text-primary-700">Celular</span>
-            <span className="">Recarga el saldo de tu teléfono</span>
+          <div className="bg-slate-200 p-3 w-max rounded-full">
+            <IoHelpCircleOutline size={25} className="text-slate-700" />
           </div>
-          <IoPhonePortraitOutline size={30} />
-        </Link>
+        </div>
 
-        <Link
-          className="flex items-start justify-between mb-2 gap-2 border border-primary-700 p-2 rounded-lg bg-slate-200"
-          href={"/inicio/billeteras/recargas/tu-llave"}
-        >
-          <div className="flex flex-col">
-            <span className="font-bold text-primary-700">Maas tullave</span>
-            <span className="">Recarga tu tarjeta de transporte masivo</span>
-          </div>
-          <IoBusOutline size={30} />
-        </Link>
+        <div className="flex flex-col gap-2 text-center mb-8">
+          <span className="font-light text-primary-700">
+            ¡Aquí puedes recargar el saldo de tu telefono, tarjetas de
+            transporte y más!
+          </span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          {/* <span className="font-light text-primary-700">Puedes retirar en:</span> */}
+
+          <RetirosCard
+            icon={<IoPhonePortraitOutline size={30} />}
+            url={"/inicio/billeteras/recargas/celular"}
+            title={"Celular"}
+            subTitle={"Recarga el saldo de tu teléfono"}
+          />
+
+          {/* <RetirosCard
+          icon={<IoBusOutline size={30} />}
+          url={"/inicio/billeteras/recargas/tu-llave"}
+          title={"Maas tullave"}
+          subTitle={"Recarga tu tarjeta de transporte masivo"}
+        /> */}
+        </div>
       </div>
     </div>
   );

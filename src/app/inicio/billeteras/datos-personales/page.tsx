@@ -3,14 +3,22 @@ import { BackButton } from "@/components";
 import Link from "next/link";
 import { IoInformationCircleOutline } from "react-icons/io5";
 
-export default async function DatosPersonalesPage() {
+interface Props {
+  searchParams: {
+    prevPage?: string;
+  };
+}
+
+export default async function DatosPersonalesPage({ searchParams }: Props) {
+  const prevPage = searchParams.prevPage;
+
   const session = await auth();
   const { identificacion, nombres, apellidos, categoriaAfiliacion } =
     session!.user;
 
   return (
     <div className="flex flex-col fade-in">
-      <BackButton url={"/inicio/billeteras"} />
+      <BackButton url={prevPage ?? "/inicio/billeteras"} />
       <div className="flex flex-col gap-2 text-center mb-12">
         <span className="font-bold text-2xl text-primary-700">
           Datos Personales

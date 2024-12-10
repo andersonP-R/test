@@ -21,19 +21,24 @@ export default async function InicioLayout({
   }
 
   return (
-    <main className="min-h-screen relative overflow-hidden">
+    <main className="relative">
       <Image
-        src={"/cinta3-md.png"}
+        src={"/images/cinta_10.png"}
         alt={"cinta-md"}
-        width={1200}
-        height={500}
-        className="w-[1200px] h-[500px] absolute top-0 left-5 -z-10"
+        width={500}
+        height={300}
+        className="w-[500px] h-[300px] object-cover fixed top-8 left-0 -z-10"
       />
-      <TopMenuHome />
-      {/* <SidebarHome /> */}
-      <div className="sm:px-10 py-2 px-4 min-h-screen">{children}</div>
+      <Image
+        src={"/images/cinta_13.png"}
+        alt={"cinta-md"}
+        width={500}
+        height={300}
+        className="w-[500px] h-[300px] object-cover fixed bottom-10 left-0 -z-10"
+      />
+      {/* <TopMenuHome /> */}
+      <div className="min-h-screen">{children}</div>
       <NavMobile />
-      {/* <Footer /> */}
     </main>
   );
 }

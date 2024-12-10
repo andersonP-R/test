@@ -1,8 +1,8 @@
-import { IService } from "@/interfaces/IService";
 import { ServiceGridItem } from "./ServiceGridItem";
+import { IService2 } from "@/seed/mock-data";
 
 interface Props {
-  services: IService[];
+  services: IService2[];
 }
 
 export const ServiceGrid = ({ services }: Props) => {

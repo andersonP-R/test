@@ -1,15 +1,11 @@
 "use server";
 
-import prisma from "@/lib/prisma";
+import { SERVICES_MOCK } from "@/seed/mock-data";
 
 export const getGiftServices = async () => {
   try {
     // 1. Obtener los servicios
-    const services = await prisma.service.findMany({
-      where: {
-        esCanjeable: true,
-      },
-    });
+    const services = SERVICES_MOCK.filter((e) => e.esCanjeable);
 
     return services;
   } catch (error) {

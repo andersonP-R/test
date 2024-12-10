@@ -5,8 +5,8 @@
 :root {
   --primary: #274494;
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: #59a6f9;
+  --background-end-rgb: white;
 }
 /* 
 @media (prefers-color-scheme: dark) {
@@ -15,7 +15,7 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-} */ 
+} */
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -23,20 +23,26 @@ body {
       to bottom,
       transparent,
       rgb(var(--background-start-rgb))
-      )
-      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-end-rgb));
 }
 
-
-
 @keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
-} 
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 @-webkit-keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .fade-in {
@@ -49,17 +55,20 @@ body {
   animation-name: fadeIn;
 }
 
-
 .btn-primary {
-  @apply bg-[#043060] hover:bg-blue-700 text-white py-2 px-4 rounded-2xl transition-all;
+  @apply p-2 w-max bg-primary-700 text-white rounded-3xl px-8 text-base;
 }
 
 .btn-secondary {
-  @apply bg-gray-200 hover:bg-gray-300 text-blue-950 py-2 px-4 rounded-lg transition-all;
+  @apply p-2 w-max bg-slate-600 text-white rounded-3xl px-8 text-base;
+}
+
+.btn-success {
+  @apply bg-green-700 p-2 w-max text-white rounded-3xl px-8 text-base;
 }
 
 .btn-disabled {
-  @apply bg-gray-600 text-white py-2 px-4 rounded transition-all;
+  @apply p-2 w-max bg-gray-600 text-white rounded-3xl px-8 text-base;
 }
 
 .btn-danger {
