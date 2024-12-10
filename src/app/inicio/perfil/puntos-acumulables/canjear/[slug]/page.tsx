@@ -1,10 +1,8 @@
 import Image from "next/image";
-// import { auth } from "@/auth.config";
-import { getServiceBySlug } from "@/actions";
 import { BackButton, SelectCenterGifs, TopMenuHome } from "@/components";
 import { titleFont } from "@/config/fonts";
 import { IoHelpCircleOutline } from "react-icons/io5";
-// import { checkUserCat } from "@/utils";
+import { SERVICES_MOCK } from "@/seed/mock-data";
 
 interface Props {
   params: {
@@ -14,9 +12,8 @@ interface Props {
 
 export default async function CanjearBySlugPage({ params }: Props) {
   const { slug } = params;
-  const service = await getServiceBySlug(slug);
-
-  // const session = await auth();
+  // const service = await getServiceBySlug(slug);
+  const service = SERVICES_MOCK.find((e) => e.slug === slug);
 
   return (
     <div className="flex flex-col">
