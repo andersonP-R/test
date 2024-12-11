@@ -27,7 +27,7 @@ export const TextSlide = () => {
         className="mySwiper2"
       >
         <SwiperSlide>
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-4">
             <span className="font-thin text-primary-700 text-center">
               Gestione y administre todos sus servicios Cafam en un solo lugar
             </span>
@@ -37,7 +37,7 @@ export const TextSlide = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-4">
             <span className="font-thin text-primary-700 text-center">
               Utilice su dinero de una manera rapida, segura y flexible
             </span>
@@ -47,7 +47,7 @@ export const TextSlide = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-4">
             <span className="font-thin text-primary-700 text-center">
               Genere certificados, paz y salvos y estractos en un solo lugar
             </span>

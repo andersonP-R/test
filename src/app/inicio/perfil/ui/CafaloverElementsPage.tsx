@@ -1,13 +1,28 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { IoMenuOutline } from "react-icons/io5";
 import Link from "next/link";
-import { AnimationControls, motion, useAnimation } from "framer-motion";
+import {
+  AnimationControls,
+  motion,
+  useAnimation,
+  useInView,
+} from "framer-motion";
+
+const variants = {
+  hidden: {},
+  show: {
+    transition: { delay: 1, duration: 2, ease: "easeInOut" },
+  },
+};
 
 export const CafaloverElementsPage = () => {
   const badge: AnimationControls = useAnimation();
+  const labels: AnimationControls = useAnimation();
   // console.log(document.documentElement.scrollHeight);
+  const sedeAdministrativaRef = useRef(null);
+  const isInView = useInView(sedeAdministrativaRef);
 
   const timeLine = async () => {
     await badge.start({
@@ -15,6 +30,19 @@ export const CafaloverElementsPage = () => {
       transition: { repeat: Infinity, duration: 2, repeatType: "reverse" },
     });
   };
+
+  const labelsTimeline = async () => {
+    if (isInView) {
+      await labels.start({ y: 200 });
+    } else {
+      await labels.start({ y: 0 });
+    }
+  };
+
+  useEffect(() => {
+    console.log(isInView);
+    labelsTimeline();
+  }, [isInView]);
 
   useEffect(() => {
     timeLine();
@@ -39,6 +67,7 @@ export const CafaloverElementsPage = () => {
           className="w-full h-full"
         />
 
+        {/* Top Nav Btns */}
         <div className="flex w-full gap-4 fixed top-4 right-4 z-10">
           <div className="flex items-center p-4 ml-8 bg-slate-200 rounded-full">
             <IoMenuOutline
@@ -73,6 +102,21 @@ export const CafaloverElementsPage = () => {
           </div>
         </div>
 
+        {/* site refs */}
+        <>
+          {/* <motion.div
+            ref={sedeAdministrativaRef}
+            className="absolute bottom-[600px] right-[40px]"
+          >
+            sede administrativa
+          </motion.div>
+
+          <div className="absolute bottom-[350px] left-[40px]">
+            cafam floresta
+          </div> */}
+        </>
+
+        {/*  */}
         <motion.button
           animate={badge}
           className="rounded-full border-2 border-orange-500 absolute bottom-[100px] left-[45px] overflow-hidden"

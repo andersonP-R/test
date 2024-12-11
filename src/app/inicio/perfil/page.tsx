@@ -1,6 +1,10 @@
 import { auth } from "@/auth.config";
 import Image from "next/image";
-import { IoFingerPrintOutline, IoGridOutline } from "react-icons/io5";
+import {
+  IoFingerPrintOutline,
+  IoGridOutline,
+  IoTrophyOutline,
+} from "react-icons/io5";
 import Link from "next/link";
 import { TopMenuHome } from "@/components";
 import { LogOutBtnProfile } from "./ui/LogOutBtnProfile";
@@ -48,7 +52,7 @@ export default async function PerfilPage() {
             className="flex justify-between items-center border border-slate-400 bg-[#ffffffb4] rounded-lg p-2  pb-1"
           >
             <span className="text-base">Cafalover</span>
-            <IoGridOutline size={20} />
+            <IoTrophyOutline size={20} />
           </Link>
 
           {/* <BtnCardListProfile

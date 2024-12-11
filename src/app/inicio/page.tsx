@@ -1,5 +1,5 @@
 import { auth } from "@/auth.config";
-import { Card, CompleteProfile, TopMenuHome } from "@/components";
+import { Card, TopMenuHome } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,7 +8,6 @@ import {
   IoNewspaperOutline,
   IoPhonePortraitOutline,
 } from "react-icons/io5";
-import { TextSlide } from "./ui/TextSlide";
 const t = [
   "Gestione y administre todos sus servicios adquiridos Cafam en un solo lugar",
   "Utilice su dinero de una manera rapida, segura y flexible.",
@@ -25,7 +24,7 @@ export default async function InicioPage() {
     <div className="flex flex-col">
       <TopMenuHome />
       <div className="flex flex-col gap-2 fade-in px-4">
-        <div className="flex flex-col items-center mb-8">
+        <div className="flex flex-col items-center mb-6">
           <span className="text-2xl font-bold text-primary-700">
             Bienvenido,
           </span>
@@ -34,22 +33,11 @@ export default async function InicioPage() {
           </span>
         </div>
 
-        <div className="flex flex-col gap-2 w-full mb-8">
-          <Image
-            src={"/images/mobile-app.png"}
-            alt={"home-img"}
-            width={350}
-            height={360}
-            className="w-[350px] h-[360px] object-cover"
-          />
-          <TextSlide />
-        </div>
-
-        <div className="flex flex-col w-full gap-4">
+        <div className="flex flex-col w-full gap-4 mb-6">
           <span className="font-semibold text-lg text-primary-800">
             Novedades
           </span>
-          <div className="flex gap-2 py-1 backdrop-blur-2xl bg-[#ffffff73] items-center border border-primary-800 rounded-3xl">
+          <div className="flex gap-2 backdrop-blur-2xl bg-[#ffffff73] items-center border border-primary-800 rounded-3xl">
             <Image
               src={"/images/emp2.png"}
               alt={"empleo-img"}
@@ -72,7 +60,7 @@ export default async function InicioPage() {
           </div>
         </div>
 
-        <div className="flex flex-col mt-10">
+        <div className="flex flex-col mb-6">
           <div className="flex gap-2 mb-4 text-primary-700 items-center">
             <span className="font-semibold text-lg text-primary-800">
               Servicios destacados
@@ -105,7 +93,7 @@ export default async function InicioPage() {
           </div>
         </div>
 
-        <div className="flex flex-col my-10 ">
+        <div className="flex flex-col mb-6 ">
           <div className="flex gap-2 mb-4 items-center">
             <span className="font-semibold text-lg text-primary-800">
               Te puede interesar
