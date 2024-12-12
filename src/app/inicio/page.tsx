@@ -14,8 +14,6 @@ const t = [
   "Todos los servicios de Cafam en tu mano.",
 ];
 
-const images = ["/images/plus.png", "/images/b2.jpg", "/images/b3.jpg"];
-
 export default async function InicioPage() {
   const session = await auth();
   const { nombres, apellidos } = session!.user;

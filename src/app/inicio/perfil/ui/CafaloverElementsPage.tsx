@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { IoMenuOutline } from "react-icons/io5";
 import Link from "next/link";
+import confetti from "canvas-confetti";
 import {
   AnimationControls,
   motion,
@@ -48,6 +49,7 @@ export const CafaloverElementsPage = () => {
 
   const handleOpenModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsOpen(true);
+    handleConfetti();
     const level = e.currentTarget.id;
     switch (level) {
       case "usuario-badge":
@@ -56,7 +58,7 @@ export const CafaloverElementsPage = () => {
           title: "Usuario",
           subTitle: "¡Sube de nivel!",
 
-          desc: "Alcanza el nivel Usuario para acceder a estos premios",
+          desc: "Alcanza el nivel Usuario y accede a promociones básicas y descuentos exclusivos para nuevos usuarios.",
         });
         break;
 
@@ -65,7 +67,7 @@ export const CafaloverElementsPage = () => {
           img: "/images/seguidor.png",
           title: "Seguidor",
           subTitle: "¡Sube de nivel!",
-          desc: "Alcanza el nivel Seguidor para acceder a estos premios",
+          desc: "Alcanza el nivel Seguidor y accede a descuentos adicionales, acceso anticipado a eventos y promociones especiales",
         });
         break;
 
@@ -74,7 +76,7 @@ export const CafaloverElementsPage = () => {
           img: "/images/fanatico.png",
           title: "Fanatico",
           subTitle: "¡Sube de nivel!",
-          desc: "Alcanza el nivel Fanatico para acceder a estos premios",
+          desc: "Alcanza el nivel Fanatico y accede a beneficios exclusivos, regalos personalizados, y acceso VIP a eventos",
         });
         break;
       case "cafalover-badge":
@@ -82,13 +84,21 @@ export const CafaloverElementsPage = () => {
           img: "/images/Group 256.png",
           title: "Cafalover",
           subTitle: "¡Sube de nivel!",
-          desc: "Alcanza el nivel Cafalover para acceder a estos premios",
+          desc: "Alcanza el nivel Cafalover y accede a experiencias únicas, atención personalizada, y recompensas premium como viajes o productos exclusivos",
         });
         break;
 
       default:
         break;
     }
+  };
+
+  const handleConfetti = () => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { x: 0.5, y: 0.5 }, // Centro del canvas
+    });
   };
 
   const labelsTimeline = async () => {
@@ -178,23 +188,34 @@ export const CafaloverElementsPage = () => {
 
         {/* --------------- MODAL --------------- */}
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-          <div className="flex flex-col items-center gap-4 px-10 py-4 bg-slate-100 text-center">
-            <span className="text-xl text-primary-700">
+          <div className="flex flex-col items-center gap-4 px-2 py-4 bg-slate-100 text-center relative">
+            <img
+              src={"/images/cinta_10.png"}
+              alt={"cinta-img"}
+              className="w-full h-full top-[-20px] object-cover absolute"
+            />
+
+            <span className="text-xl text-primary-800 z-10">
               {levelObj.subTitle}
             </span>
 
             <Image
               src={levelObj.img}
               alt={"badge-img"}
-              width={100}
-              height={100}
-              className="w-[100px] h-[100px] object-cover"
+              width={150}
+              height={150}
+              className="w-[150px] h-[150px] object-cover z-10"
             />
-            <span className="text-2xl text-primary-700">{levelObj.title}</span>
-            <span>{levelObj.desc}</span>
+            <span className="text-2xl text-primary-800 z-10">
+              {levelObj.title}
+            </span>
+            <span className="text-slate-700 z-10">{levelObj.desc}</span>
 
-            <button onClick={() => setIsOpen(false)} className="btn-secondary">
-              Cerrar
+            <button
+              onClick={() => setIsOpen(false)}
+              className="btn-primary z-10"
+            >
+              Aceptar
             </button>
           </div>
         </Modal>
