@@ -23,7 +23,7 @@ const modalVariants = {
 export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => (
   <AnimatePresence>
     {isOpen && (
-      <>
+      <div className="z-20">
         {/* Backdrop */}
         <motion.div
           className="fixed inset-0 bg-black bg-opacity-50"
@@ -48,7 +48,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => (
             {children}
           </div>
         </motion.div>
-      </>
+      </div>
     )}
   </AnimatePresence>
 );

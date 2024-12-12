@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { IoMenuOutline } from "react-icons/io5";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import {
   useAnimation,
   useInView,
 } from "framer-motion";
+import { Modal } from "@/components";
 
 const variants = {
   hidden: {},
@@ -17,18 +18,77 @@ const variants = {
   },
 };
 
+interface ModalObj {
+  img: string;
+  title: string;
+  subTitle: string;
+  desc: string;
+}
+
 export const CafaloverElementsPage = () => {
   const badge: AnimationControls = useAnimation();
   const labels: AnimationControls = useAnimation();
   // console.log(document.documentElement.scrollHeight);
   const sedeAdministrativaRef = useRef(null);
   const isInView = useInView(sedeAdministrativaRef);
+  const [isOpen, setIsOpen] = useState(false);
+  const [levelObj, setLevelObj] = useState<ModalObj>({
+    img: "",
+    title: "",
+    subTitle: "",
+    desc: "",
+  });
 
   const timeLine = async () => {
     await badge.start({
       y: -20,
       transition: { repeat: Infinity, duration: 2, repeatType: "reverse" },
     });
+  };
+
+  const handleOpenModal = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsOpen(true);
+    const level = e.currentTarget.id;
+    switch (level) {
+      case "usuario-badge":
+        setLevelObj({
+          img: "/images/usuario3.png",
+          title: "Usuario",
+          subTitle: "¡Sube de nivel!",
+
+          desc: "Alcanza el nivel Usuario para acceder a estos premios",
+        });
+        break;
+
+      case "seguidor-badge":
+        setLevelObj({
+          img: "/images/seguidor.png",
+          title: "Seguidor",
+          subTitle: "¡Sube de nivel!",
+          desc: "Alcanza el nivel Seguidor para acceder a estos premios",
+        });
+        break;
+
+      case "fanatico-badge":
+        setLevelObj({
+          img: "/images/fanatico.png",
+          title: "Fanatico",
+          subTitle: "¡Sube de nivel!",
+          desc: "Alcanza el nivel Fanatico para acceder a estos premios",
+        });
+        break;
+      case "cafalover-badge":
+        setLevelObj({
+          img: "/images/Group 256.png",
+          title: "Cafalover",
+          subTitle: "¡Sube de nivel!",
+          desc: "Alcanza el nivel Cafalover para acceder a estos premios",
+        });
+        break;
+
+      default:
+        break;
+    }
   };
 
   const labelsTimeline = async () => {
@@ -116,6 +176,29 @@ export const CafaloverElementsPage = () => {
           </div> */}
         </>
 
+        {/* --------------- MODAL --------------- */}
+        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          <div className="flex flex-col items-center gap-4 px-10 py-4 bg-slate-100 text-center">
+            <span className="text-xl text-primary-700">
+              {levelObj.subTitle}
+            </span>
+
+            <Image
+              src={levelObj.img}
+              alt={"badge-img"}
+              width={100}
+              height={100}
+              className="w-[100px] h-[100px] object-cover"
+            />
+            <span className="text-2xl text-primary-700">{levelObj.title}</span>
+            <span>{levelObj.desc}</span>
+
+            <button onClick={() => setIsOpen(false)} className="btn-secondary">
+              Cerrar
+            </button>
+          </div>
+        </Modal>
+
         {/*  */}
         <motion.button
           animate={badge}
@@ -131,6 +214,8 @@ export const CafaloverElementsPage = () => {
         </motion.button>
 
         <motion.button
+          onClick={(e) => handleOpenModal(e)}
+          id="usuario-badge"
           animate={badge}
           className="flex flex-col items-center bg-[#1556a1b2] rounded-full px-6 py-4 absolute bottom-[630px] left-[68px] overflow-hidden"
         >
@@ -145,6 +230,8 @@ export const CafaloverElementsPage = () => {
         </motion.button>
 
         <motion.button
+          onClick={(e) => handleOpenModal(e)}
+          id="seguidor-badge"
           animate={badge}
           className="flex flex-col items-center bg-[#1556a1b2] rounded-full px-6 py-4 absolute bottom-[1120px] left-[100px] overflow-hidden"
         >
@@ -159,6 +246,8 @@ export const CafaloverElementsPage = () => {
         </motion.button>
 
         <motion.button
+          onClick={(e) => handleOpenModal(e)}
+          id="fanatico-badge"
           animate={badge}
           className="flex flex-col items-center bg-[#1556a1b2] rounded-full px-6 py-4 absolute top-[1050px] left-[160px] overflow-hidden"
         >
@@ -172,7 +261,11 @@ export const CafaloverElementsPage = () => {
           <span className="font-bold text-slate-200">Fanatico</span>
         </motion.button>
 
-        <button className="flex flex-col items-center absolute top-[25px] left-[120px] overflow-hidden">
+        <button
+          onClick={(e) => handleOpenModal(e)}
+          id="cafalover-badge"
+          className="flex flex-col items-center absolute top-[25px] left-[120px] overflow-hidden"
+        >
           <Image
             src={"/images/Group 256.png"}
             alt={"img"}
