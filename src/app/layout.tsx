@@ -5,7 +5,7 @@ import { Providers } from "@/components";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s - Cafam",
+    template: "Cafam",
     default: "Cafam",
   },
   description: "Caja de compensacion familiar",
