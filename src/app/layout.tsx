@@ -9,6 +9,10 @@ export const metadata: Metadata = {
     default: "Cafam",
   },
   description: "Caja de compensacion familiar",
+  manifest: "/manifest.json",
+  icons: {
+    apple: "/icon512_rounded.png",
+  },
 };
 
 export default function RootLayout({
