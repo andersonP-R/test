@@ -10,7 +10,7 @@ export const DeviceChecker = () => {
     const deviceBaseOnWidth = window.innerWidth;
     setw(deviceBaseOnWidth);
 
-    if (w > 450) {
+    if (w > 540) {
       document.documentElement.style.overflowY = "hidden";
       document.body.style.overflowY = "hidden";
     }
@@ -21,7 +21,7 @@ export const DeviceChecker = () => {
       className={clsx(
         "w-screen h-full flex justify-center bg-[#ddddddb7] absolute z-50 backdrop-blur-md fade-in",
         {
-          "w-screen h-screen bg-[#ddddddb7] hidden": w < 450,
+          "w-screen h-screen bg-[#ddddddb7] hidden": w < 540,
         }
       )}
     >
