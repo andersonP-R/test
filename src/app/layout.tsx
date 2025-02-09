@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${titleFont.className} `}>
+      <body id="body-content" className={`${titleFont.className} `}>
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -16,6 +16,7 @@ export * from "./ui/BackButton";
 export * from "./ui/BackButton2";
 export * from "./ui/AddToCheckout";
 export * from "./ui/CompleteProfile";
+export * from "./ui/DeviceChecker";
 
 export * from "./ui/logos/CafamLogo";
 export * from "./ui/logos/CafamLogoLetter";

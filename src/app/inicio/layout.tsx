@@ -1,8 +1,9 @@
 import { auth } from "@/auth.config";
-import { NavMobile, TopMenuHome } from "@/components";
+import { NavMobile } from "@/components";
 import { Metadata } from "next";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import { DeviceChecker } from "../../components/ui/DeviceChecker";
 
 export const metadata: Metadata = {
   title: "Inicio",
@@ -20,8 +21,11 @@ export default async function InicioLayout({
     redirect("/auth/sign-in");
   }
 
+  //console.log(window.innerWidth);
+
   return (
     <main className="relative">
+      <DeviceChecker />
       <Image
         src={"/images/cinta_10.png"}
         alt={"cinta-md"}
