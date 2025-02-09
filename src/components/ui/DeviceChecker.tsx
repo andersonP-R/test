@@ -31,10 +31,10 @@ export const DeviceChecker = () => {
         </span>
         <span className="mb-2 text-center">
           Querido usuario, actualmente la aplicación no se encuentra optimizada
-          para computadoras o pantallas con un tamaño de viewport mayor a 450px.
+          para computadoras o pantallas con un tamaño de viewport mayor a 540px.
           Por favor, para la correcta visualización y experiencia de usuario le
           recomendamos que visite esta página desde un teléfono celular. También
-          puede ajustar el tamaño de la ventana de su navegador en: 449px y
+          puede ajustar el tamaño de la ventana de su navegador en: 539px y
           recargar la página.
         </span>
         <span className="mb-2 text-center">
